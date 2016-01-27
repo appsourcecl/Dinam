@@ -11,19 +11,17 @@ use App\Administrador;
 class PlataformaController extends Controller
 {
 
-  //Constructor, donde agrego excepcion del middleware de sesión administrador
+  //Constructor, donde agrego excepcion del middleware de vista de login
   public function __construct()
   {
     $this->middleware('sesionAdministrador', ['except' => ['getLogin','postLogear']]);
   }
-
   //Vista principal de formulario de ingreso
   public function getLogin()
   {
     $data['title'] = "Login";
     return view('plataforma.login',$data);
   }
-
   public function postLogear(Request $request)
   {
     //Mensaje de error
@@ -35,10 +33,8 @@ class PlataformaController extends Controller
       'email' => 'required',
       'password' => 'required',
     ];
-
     //Valido los campos
     $validator = Validator::make($request->all(), $rules,$messages);
-
     if ($validator->fails()) {
       return redirect('plataforma/login')
       ->withErrors($validator)
@@ -47,7 +43,6 @@ class PlataformaController extends Controller
     //Condiciones para la consulta sql
     $where = ['email' => $request->email, 'password' => $request->password];
     $administrador = administrador::where($where)->find(1);
-
     //Si el usuario no existe en la base de datos, redireccionará a la vista login
     if($administrador == null)
     {
@@ -62,16 +57,11 @@ class PlataformaController extends Controller
       $request->session()->put('idAdministrador', $administrador->id);
       return redirect('plataforma/principal');
     }
-
-    //$request->session()->put('id', $usuario->id);
-    //return redirect("usuario/index");
-
   }
-
   //Dashboard o panel principal de la plataforma
   public function getPrincipal(Request $request)
   {
-    echo "Usuario logeado";
-    //echo $request->session()->get('nombreAdministrador');
+    $data['title'] = "Principal";
+    return view('plataforma.principal',$data);
   }
 }
