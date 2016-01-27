@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ea1fee525914154e6d6bbf071697b5a1",
-    "content-hash": "8b1485987e7c5949da82435d403e52e8",
+    "hash": "15b64d733f5d94df1daa8d3aca9f6a19",
+    "content-hash": "0feb6af5bef0e094e776fba476c27e7c",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -308,16 +308,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.11",
+            "version": "v5.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "e8ad411ac3ca63f532952417156e32d010fcc522"
+                "reference": "6b6255ad7bfbdb721b8d00b09d52b146c5d363d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/e8ad411ac3ca63f532952417156e32d010fcc522",
-                "reference": "e8ad411ac3ca63f532952417156e32d010fcc522",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/6b6255ad7bfbdb721b8d00b09d52b146c5d363d7",
+                "reference": "6b6255ad7bfbdb721b8d00b09d52b146c5d363d7",
                 "shasum": ""
             },
             "require": {
@@ -432,7 +432,61 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-01-22 18:36:05"
+            "time": "2016-01-26 04:15:37"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "7ec0ca55cab54cc6d331007d86ec068b61f46aad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/7ec0ca55cab54cc6d331007d86ec068b61f46aad",
+                "reference": "7ec0ca55cab54cc6d331007d86ec068b61f46aad",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.2.*",
+                "illuminate/routing": "5.2.*",
+                "illuminate/session": "5.2.*",
+                "illuminate/support": "5.2.*",
+                "illuminate/view": "5.2.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "illuminate/database": "5.2.*",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "http://laravelcollective.com",
+            "time": "2016-01-20 18:28:21"
         },
         {
             "name": "league/flysystem",
@@ -597,23 +651,23 @@
         },
         {
             "name": "mtdowling/cron-expression",
-            "version": "v1.0.4",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mtdowling/cron-expression.git",
-                "reference": "fd92e883195e5dfa77720b1868cf084b08be4412"
+                "reference": "c9ee7886f5a12902b225a1a12f36bb45f9ab89e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mtdowling/cron-expression/zipball/fd92e883195e5dfa77720b1868cf084b08be4412",
-                "reference": "fd92e883195e5dfa77720b1868cf084b08be4412",
+                "url": "https://api.github.com/repos/mtdowling/cron-expression/zipball/c9ee7886f5a12902b225a1a12f36bb45f9ab89e5",
+                "reference": "c9ee7886f5a12902b225a1a12f36bb45f9ab89e5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*"
+                "phpunit/phpunit": "~4.0|~5.0"
             },
             "type": "library",
             "autoload": {
@@ -637,7 +691,7 @@
                 "cron",
                 "schedule"
             ],
-            "time": "2015-01-11 23:07:46"
+            "time": "2016-01-26 21:23:30"
         },
         {
             "name": "nesbot/carbon",
