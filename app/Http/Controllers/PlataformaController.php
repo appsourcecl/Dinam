@@ -52,9 +52,9 @@ class PlataformaController extends Controller
     }else{
       //Si el usuario existe, creo las variables de sesión que se utilizarán para validar el ingreso
       $request->session()->put('sesionAdministrador', true);
-      $request->session()->put('nombreAdministrador', $administrador->nombre);
-      $request->session()->put('apellidoAdministrador', $administrador->apellido);
-      $request->session()->put('idAdministrador', $administrador->id);
+      $request->session()->put('nombreUsuario', $administrador->nombre);
+      $request->session()->put('apellidoUsuario', $administrador->apellido);
+      $request->session()->put('idUsuario', $administrador->id);
       return redirect('plataforma/principal');
     }
   }

@@ -9,5 +9,15 @@ use App\Http\Controllers\Controller;
 
 class HoraController extends Controller
 {
-    //
+
+  //Constructor, donde agrego excepcion del middleware de vista de login
+  public function __construct()
+  {
+    $this->middleware('sesionAdministrador');
+  }
+
+  public function getVerHoras()
+  {
+    echo "Horas";
+  }
 }
