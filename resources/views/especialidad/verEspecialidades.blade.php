@@ -21,49 +21,50 @@
         <br><br><br>
         @if (! empty(Session::get('message')))
         <div class="row">
-          <div class="alert alert-success">
-            {{Session::get('message')}}
+          <center>
+            <div class="alert alert-success">
+              {{Session::get('message')}}
+            </div>
+          </center>
+        </div>
+
+        @endif
+        <div class="row stacked">
+          <div class="col-md-12">
+            <table class="table table-bordered table-condensed table-hover datatable">
+              <thead>
+                <tr>
+                  <th>
+                    Nombre
+                  </th>
+                  <th>
+                    Descripción
+                  </th>
+                  <th class="col-md-1">
+                    Detalle
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($especialidades as $especialidad)
+                <tr>
+                  <td>
+                    {{$especialidad->nombre}}
+                  </td>
+                  <td>
+                    {{$especialidad->descripcion}}
+                  </td>
+                  <td>
+                    <a href="{{ URL::to('especialidad/detalle-especialidad?id='.$especialidad->id) }}" class="btn btn-info btn-mini active">Ver detalle</a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
           </div>
-        </center>
-      </div>
-    </div>
-    @endif
-    <div class="row stacked">
-      <div class="col-md-12">
-        <table class="table table-bordered table-condensed table-hover datatable">
-          <thead>
-            <tr>
-              <th>
-                Nombre
-              </th>
-              <th>
-                Descripción
-              </th>
-              <th class="col-md-1">
-                Detalle
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($especialidades as $especialidad)
-            <tr>
-              <td>
-                {{$especialidad->nombre}}
-              </td>
-              <td>
-                {{$especialidad->descripcion}}
-              </td>
-              <td>
-                <a class="btn btn-info btn-mini active">Ver detalle</a>
-              </td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>
 @stop

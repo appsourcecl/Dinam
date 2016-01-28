@@ -27,7 +27,7 @@ class PlataformaController extends Controller
     //Mensaje de error
     $messages = [
       'required' => ':Attribute es requerido',
-    ];
+    ]; 
     //Reglas de validación
     $rules = [
       'email' => 'required',

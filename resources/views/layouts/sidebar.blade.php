@@ -7,7 +7,8 @@
         </li>
         <li class="xn-profile">
             <a href="#" class="profile-mini">
-                <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                <br>
+                <br>
             </a>
             <div class="profile">
                 <div class="profile-data">
