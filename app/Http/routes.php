@@ -20,5 +20,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::controller('hora', 'HoraController');
   Route::controller('especialidad', 'EspecialidadController');
   Route::controller('administrador', 'AdministradorController');
+  Route::controller('profesional', 'ProfesionalController');
 
 });
