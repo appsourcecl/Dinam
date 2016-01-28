@@ -44,7 +44,7 @@
         <li class="xn-openable">
             <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">Administración </span></a>
             <ul>
-                <li><a href="{{ URL::to('administrador/ver-administradores') }}"><span class="fa fa-eye"></span> Ver adminsitradores</a></li>
+                <li><a href="{{ URL::to('administrador/ver-administradores') }}"><span class="fa fa-eye"></span> Ver administradores</a></li>
                 <li><a href="{{ URL::to('plataforma/configuracion') }}"><span class="fa fa-cog"></span> Configuración general </a></li>
             </ul>
         </li>

@@ -7,16 +7,16 @@
     <div class="panel panel-default">
       <div class="panel-heading ui-draggable-handle">
         <div class="panel-title-box">
-          <h3>Especialidades</h3>
-          <span>Visualización e ingreso de especialidades</span>
+          <h3>Administradores</h3>
+          <span>Visualización e ingreso de administradores del sistema</span>
         </div>
         <ul class="panel-controls panel-controls-title">
           <li><a href="#" class="panel-fullscreen rounded"><span class="fa fa-expand"></span></a></li>
         </ul>
       </div>
       <div class="panel-body">
-        <a class="btn btn-success btn-mini btn-rounded" href="{{ URL::to('especialidad/ingreso-especialidad') }}">
-          <i class="fa fa-edit"></i>Ingresar nueva especialidad
+        <a class="btn btn-success btn-mini btn-rounded" href="{{ URL::to('administrador/ingreso-administrador') }}">
+          <i class="fa fa-edit"></i>Ingresar nuevo administrador
         </a>
         <br><br><br>
         @if (! empty(Session::get('message')))
@@ -37,7 +37,10 @@
                     Nombre
                   </th>
                   <th>
-                    Descripción
+                    Apellido
+                  </th>
+                  <th>
+                    Email
                   </th>
                   <th class="col-md-1">
                     Detalle
@@ -45,16 +48,19 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($especialidades as $especialidad)
+                @foreach ($administradores as $administrador)
                 <tr>
                   <td>
-                    {{$especialidad->nombre}}
+                    {{$administrador->nombre}}
                   </td>
                   <td>
-                    {{$especialidad->descripcion}}
+                    {{$administrador->apellido}}
                   </td>
                   <td>
-                    <a href="{{ URL::to('especialidad/detalle-especialidad?id='.$especialidad->id) }}" class="btn btn-info btn-mini active">Ver detalle</a>
+                    {{$administrador->email}}
+                  </td>
+                  <td>
+                    <a href="{{ URL::to('administrador/detalle-administrador?id='.$administrador->id) }}" class="btn btn-info btn-mini active">Ver detalle</a>
                   </td>
                 </tr>
                 @endforeach

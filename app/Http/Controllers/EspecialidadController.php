@@ -30,7 +30,7 @@ class EspecialidadController extends Controller
   public function getIngresoEspecialidad()
   {
     $data['title'] = "Ingreso de especialidad";
-    return view('especialidad.ingresoEspecialidades',$data);
+    return view('especialidad.ingresoEspecialidad',$data);
   }
 
   public function postIngresarEspecialidad(Request $request)
@@ -85,7 +85,6 @@ class EspecialidadController extends Controller
       ->withErrors($validator)
       ->withInput();
     }
-
     $especialidad = Especialidad::where('id', $data['id'])->first();
     $especialidad->nombre = $request->nombre;
     $especialidad->descripcion = $request->descripcion;

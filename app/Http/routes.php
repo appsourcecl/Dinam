@@ -19,5 +19,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::controller('plataforma', 'PlataformaController');
   Route::controller('hora', 'HoraController');
   Route::controller('especialidad', 'EspecialidadController');
+  Route::controller('administrador', 'AdministradorController');
 
 });
