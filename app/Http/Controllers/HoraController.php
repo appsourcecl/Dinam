@@ -18,6 +18,13 @@ class HoraController extends Controller
 
   public function getVerHoras()
   {
-    echo "Horas";
+    $data['title'] = "Horas";
+    return view('layouts.construccion',$data);
+  }
+
+  public function getReservarHora()
+  {
+    $data['title'] = "Horas";
+    return view('layouts.construccion',$data);
   }
 }

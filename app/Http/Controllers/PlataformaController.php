@@ -27,7 +27,7 @@ class PlataformaController extends Controller
     //Mensaje de error
     $messages = [
       'required' => ':Attribute es requerido',
-    ]; 
+    ];
     //Reglas de validación
     $rules = [
       'email' => 'required',
@@ -62,6 +62,12 @@ class PlataformaController extends Controller
   public function getPrincipal(Request $request)
   {
     $data['title'] = "Principal";
-    return view('plataforma.principal',$data);
+    return view('layouts.construccion',$data);
+  }
+
+  public function getConfiguracion(Request $request)
+  {
+    $data['title'] = "Configuración";
+    return view('layouts.construccion',$data);
   }
 }

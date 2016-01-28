@@ -11,7 +11,6 @@
 |
 */
 Route::group(['middleware' => ['web']], function () {
-
   Route::get('/', function () {
       return view('welcome');
   });
@@ -21,5 +20,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::controller('especialidad', 'EspecialidadController');
   Route::controller('administrador', 'AdministradorController');
   Route::controller('profesional', 'ProfesionalController');
+  Route::controller('paciente', 'PacienteController');
 
 });

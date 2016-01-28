@@ -51,7 +51,7 @@
         </div>
         <div class="mb-footer">
           <div class="pull-right">
-            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+            <a href="{{ URL::to('plataforma/login') }}" class="btn btn-success btn-lg">Yes</a>
             <button class="btn btn-default btn-lg mb-control-close">No</button>
           </div>
         </div>
