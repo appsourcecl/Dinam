@@ -94,6 +94,9 @@
   <script type='text/javascript' src="{{ URL::asset('js/plugins/validationengine/jquery.validationEngine.js') }}"></script>
   <script type='text/javascript' src="{{ URL::asset('js/plugins/jquery-validation/jquery.validate.js') }}"></script>
 
+  <script type="text/javascript" src="{{ URL::asset('js/plugins/moment.min.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+
   <!-- END THIS PAGE PLUGINS-->
 
   <!-- START TEMPLATE -->
