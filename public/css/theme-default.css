@@ -5156,7 +5156,7 @@ background: #1caf9a !important;
 /* END MAILBOX */
 /* BOOTSTRAP DATEPICKER */
 div.datepicker {
-  padding: 4px;
+  padding: 1px;
   -moz-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
@@ -5199,7 +5199,6 @@ div.datepicker td span {
   height: 54px;
   line-height: 54px;
   float: left;
-  margin: 2px;
   cursor: pointer;
 }
 div.datepicker td span:hover {
@@ -5224,7 +5223,7 @@ div.datepicker th.prev {
 }
 div.datepicker thead tr:first-child th {
   cursor: pointer;
-  padding: 8px 0px;
+  padding: 7px 0px;
 }
 div.datepicker thead tr:first-child th:hover {
   background: #F5F5F5;

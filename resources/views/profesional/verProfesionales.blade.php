@@ -51,10 +51,10 @@
                 @foreach ($profesionales as $profesional)
                 <tr>
                   <td>
-                    {{$profesional->nombre}}
+                    {{ucwords($profesional->nombre)}}
                   </td>
                   <td>
-                    {{$profesional->apellido}}
+                    {{ucwords($profesional->apellido)}}
                   </td>
                   <td>
                     {{$profesional->email}}

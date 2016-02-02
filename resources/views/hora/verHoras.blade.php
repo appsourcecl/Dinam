@@ -15,59 +15,54 @@
         </ul>
       </div>
       <div class="panel-body">
-        <br><br><br>
-        @if (! empty(Session::get('message')))
-        <div class="row">
-          <center>
-            <div class="alert alert-success">
-              {{Session::get('message')}}
-            </div>
-          </center>
-        </div>
-        @endif
-        <div class="row stacked">
-          <div class="col-md-3" style="padding:10px">
-            <div class="content-frame-left">
-              <h4>New Event</h4>
+        <form id="formulario_principal">
+          <div class="row">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="col-md-6">
               <div class="form-group">
-                <div class="input-group">
-                  <input type="text" class="form-control" id="new-event-text" placeholder="Event text..."/>
-                  <div class="input-group-btn">
-                    <button class="btn btn-primary" id="new-event">Add</button>
-                  </div>
+                <label class="col-md-3 control-label">Profesional</label>
+                <div class="col-md-9">
+                  <select name="profesional_id" class="form-control">
+                    <option value="">Todos los profesionales</option>
+                    @foreach ($profesionales as $profesional)
+                    <option value="{{$profesional->id}}">{{ ucwords($profesional->nombre." ".$profesional->apellido) }}</option>
+                    @endforeach
+                  </select>
+                  <span class="help-block"><br></span>
                 </div>
               </div>
 
 
-              <h4>External Events</h4>
-              <div class="list-group border-bottom" id="external-events">
-                <a class="list-group-item external-event">Lorem ipsum dolor</a>
-                <a class="list-group-item external-event">Nam a nisi et nisi</a>
-                <a class="list-group-item external-event">Donec tristique eu</a>
-                <a class="list-group-item external-event">Vestibulum cursus</a>
-                <a class="list-group-item external-event">Etiam euismod</a>
-                <a class="list-group-item external-event">Sed pharetra dolor</a>
+              <div class="form-group">
+                <label class="col-md-3 control-label">Rut paciente</label>
+                <div class="col-md-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="fa fa-user"></span></span>
+                    <input type="text" class="form-control" placeholder="12345678-5" >
+                  </div>
+                  <span class="help-block">Dejar en blanco si desea ver todas las horas</span>
+                </div>
               </div>
+            </div>
+            <div class="col-md-6">
 
-              <div class="push-up-10">
-                <label class="check">
-                  <input type="checkbox" class="icheckbox" id="drop-remove"/> Remove after drop
-                </label>
+              <div class="form-group">
+                <label class="col-md-3 control-label">Día a consultar</label>
+                <div class="col-md-9">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                    <input type="text" class="form-control datepicker"  name="fecha" value="{{ $fecha }}">
+                  </div>
+                </div>
               </div>
-
-
+            </div>
+            <div class="col-md-12">
+              <input type="button" class="btn btn-info" onCLick="calendario_horas()" value="Consultar hora" />
             </div>
           </div>
-          <!-- END CONTENT FRAME LEFT -->
-
-
-          <div class="col-md-9">
-            <div id="alert_holder"></div>
-            <div class="calendar">
-              <div id="calendar"></div>
-            </div>
-
-            <!-- END CONTENT FRAME BODY -->
+        </form>
+        <div class="row">
+          <div id="resultado">
 
           </div>
         </div>
@@ -76,4 +71,25 @@
   </div>
 </div>
 </div>
+
+<script>
+
+function calendario_horas()
+{
+  $.ajax({
+    url: "ajax-calendario-horas",
+    type: 'GET',
+    data: $("#formulario_principal").serialize(),
+    success: function(data) {
+      $("#resultado").html(data);
+    },
+    error: function(xhr) {
+      console.log(xhr.responseText);
+    }
+  });
+}
+
+
+</script>
+
 @stop

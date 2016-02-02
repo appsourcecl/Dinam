@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Response;
+use App\Profesional;
+use App\Hora;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -18,8 +20,34 @@ class HoraController extends Controller
 
   public function getVerHoras()
   {
+    $data['fecha'] = date("Y-m-d");
+    $data['arrFecha'] = explode("-",$data['fecha']);
+    //Listo a todos los profesionales
+    //Realizo una consulta para las especialidades
+    $data['profesionales'] = Profesional::select('nombre','apellido','id')
+    ->orderBy('apellido', 'desc')
+    ->get();
+
     $data['title'] = "Horas";
     return view('hora.verHoras',$data);
+  }
+
+  public function getAjaxCalendarioHoras(Request $request)
+  {
+    $data['fecha'] = $request->fecha;
+    $data['arrFecha'] = explode("-",$data['fecha']);
+
+    if($request->profesional_id == "")
+    {
+      $data['todos_profesionales'] = true;
+    }else{
+      $data['todos_profesionales'] = false;
+      $data['profesional'] = Profesional::select('nombre','apellido','id')
+      ->where('id', $request->profesional_id)
+      ->first();
+    }
+
+    return view('hora.ajaxCalendarioHoras',$data);
   }
 
   public function getAjaxVerHoras()

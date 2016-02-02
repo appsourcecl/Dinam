@@ -96,6 +96,7 @@
 
   <script type="text/javascript" src="{{ URL::asset('js/plugins/moment.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/plugins/fullcalendar/lang/es.js') }}"></script>
 
   <!-- END THIS PAGE PLUGINS-->
 
@@ -104,6 +105,8 @@
   <script type="text/javascript" src="{{ URL::asset('js/actions.js') }}"></script>
 
   <script type="text/javascript" src="{{ URL::asset('js/demo_dashboard.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
+
   <!-- END TEMPLATE -->
   <!-- END SCRIPTS -->
 </body>
