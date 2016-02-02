@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Especialidad extends Migration
+class Paciente extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,13 @@ class Especialidad extends Migration
      */
     public function up()
     {
-      Schema::create('especialidades', function (Blueprint $table) {
+      Schema::create('pacientes', function (Blueprint $table) {
         $table->increments('id');
         $table->string('nombre');
-        $table->string('descripcion',1000)->nullable();
+        $table->string('apellido');
+        $table->string('email')->unique();
+        $table->string('password', 255);
+        $table->rememberToken();
         $table->timestamps();
       });
     }
@@ -27,6 +30,6 @@ class Especialidad extends Migration
      */
     public function down()
     {
-        Schema::drop('especialidades');
+      Schema::drop('pacientes');
     }
 }

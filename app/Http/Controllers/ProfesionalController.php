@@ -7,6 +7,8 @@ use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Profesional;
+use App\Especialidad;
+use App\Profesional_especialidad;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -29,6 +31,9 @@ class ProfesionalController extends Controller
   //Controlador que muestra la vista con el formulario de ingreso de profesionales
   public function getIngresoProfesional()
   {
+    //Listado de especialidades para ingresar al profesional
+    $data['especialidades'] = Especialidad::orderBy('nombre', 'desc')->get();
+
     $data['title'] = "Ingreso de profesional";
     return view('profesional.ingresoProfesional',$data);
   }
@@ -38,12 +43,13 @@ class ProfesionalController extends Controller
     //Mensaje de error
     $messages = [
       'required' => ':Attribute es requerido',
+      'unique' => ':El email ya se ha ingresado anteriormente',
     ];
     //Reglas de validación
     $rules = [
       'nombre' => 'required',
       'apellido' => 'required',
-      'email' => 'required',
+      'email' => 'required||unique:profesionales',
       'password' => 'required'
     ];
     //Valido los campos
@@ -58,8 +64,17 @@ class ProfesionalController extends Controller
     $profesional->apellido = $request->apellido;
     $profesional->email = $request->email;
     $profesional->password = $request->password;
-
     $profesional->save();
+
+    //Ingreso las especialidades del profesional en base al arreglo de checkbox del formulario
+    foreach($request->chkEspecialidades as $especialidad_id)
+    {
+      $profesional_especialidad = new profesional_especialidad;
+      $profesional_especialidad->especialidad_id = $especialidad_id;
+      $profesional_especialidad->profesional_id = $profesional->id;
+      $profesional_especialidad->save();
+    }
+
     $request->session()->flash('message', 'profesional ingresado con éxito');
     return redirect('profesional/ver-profesionales');
   }
@@ -67,6 +82,14 @@ class ProfesionalController extends Controller
   public function getDetalleProfesional(Request $request)
   {
     $data['id'] = $request->id;
+    //Listado de especialidades para ingresar al profesional
+    $data['especialidades'] = Especialidad::orderBy('nombre', 'desc')
+    ->get();
+
+    $data['profesional_especialidades'] = Profesional_especialidad::orderBy('id', 'desc')
+    ->where('profesional_id',$data['id'])
+    ->get();
+
     $data['profesional'] = profesional::where('id', $data['id'])->first();
     $data['title'] = $data['profesional']->nombre;
     return view('profesional.detalleProfesional',$data);
@@ -100,6 +123,17 @@ class ProfesionalController extends Controller
     $profesional->email = $request->email;
     $profesional->password = $request->password;
     $profesional->save();
+
+    $profesional_especialidad = new profesional_especialidad;
+    profesional_especialidad::where('profesional_id', $profesional->id)->delete();
+    //Ingreso las especialidades del profesional en base al arreglo de checkbox del formulario
+    foreach($request->chkEspecialidades as $especialidad_id)
+    {
+      $profesional_especialidad = new profesional_especialidad;
+      $profesional_especialidad->especialidad_id = $especialidad_id;
+      $profesional_especialidad->profesional_id = $profesional->id;
+      $profesional_especialidad->save();
+    }
 
     $request->session()->flash('message', 'profesional editado con éxito');
     return redirect('profesional/detalle-profesional?id='.$data['id']);

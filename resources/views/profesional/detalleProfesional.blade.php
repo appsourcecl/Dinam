@@ -87,6 +87,32 @@
         </div>
       </div>
 
+      <!-- Listado de especialidades del profesional  -->
+      <div class="form-group">
+        <label class="col-md-3 col-xs-12 control-label">Especialidades</label>
+        <div class="col-md-6 col-xs-12">
+          @foreach ($especialidades as $especialidad)
+          {{--*/ $checked = '' /*--}}
+          @foreach ($profesional_especialidades as $profesional_especialidad)
+
+          @if ($especialidad->id == $profesional_especialidad->especialidad_id)
+          {{--*/ $checked = 'checked' /*--}}
+          @endif
+          @endforeach
+          <label class="check">
+            <div class="icheckbox_minimal-grey" style="position: relative;">
+              <input {{ $checked }} type="checkbox" name="chkEspecialidades[]" value="{{ $especialidad->id }}" class="icheckbox" style="position: absolute; opacity: 0;">
+              <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+            </div>
+            {{$especialidad->nombre}}
+          </label>
+          <br>
+          @endforeach
+          <span class="help-block">Puede seleccionar más de una especialidad</span>
+        </div>
+      </div>
+
+
     </div>
     <div class="panel-footer">
       <input type="submit" class="btn btn-success" value="Editar profesional" />
