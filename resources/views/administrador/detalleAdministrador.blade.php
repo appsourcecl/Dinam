@@ -11,7 +11,7 @@
       <div class="panel panel-default">
         <div class="panel-heading ui-draggable-handle">
           <div class="panel-title">
-            <h3>Administrador : {{ $administrador->nombre." ".$administrador->apellido }}</h3>
+            <h3>Administrador : {{ ucwords($administrador->nombre." ".$administrador->apellido) }}</h3>
           </div>
           <ul class="panel-controls panel-controls-title">
             <li><a href="#" class="panel-fullscreen rounded"><span class="fa fa-expand"></span></a></li>
@@ -86,7 +86,7 @@
           </div>
         </div>
       </div>
-    
+
     </div>
     <div class="panel-footer">
       <input type="submit" class="btn btn-success" value="Editar administrador" />

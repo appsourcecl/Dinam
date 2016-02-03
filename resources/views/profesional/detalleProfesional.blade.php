@@ -11,7 +11,7 @@
       <div class="panel panel-default">
         <div class="panel-heading ui-draggable-handle">
           <div class="panel-title">
-            <h3>profesional : {{ $profesional->nombre." ".$profesional->apellido }}</h3>
+            <h3>Profesional : {{ ucwords($profesional->nombre." ".$profesional->apellido) }}</h3>
           </div>
           <ul class="panel-controls panel-controls-title">
             <li><a href="#" class="panel-fullscreen rounded"><span class="fa fa-expand"></span></a></li>

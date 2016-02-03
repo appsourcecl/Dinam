@@ -44,14 +44,14 @@
   <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
     <div class="mb-container">
       <div class="mb-middle">
-        <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+        <div class="mb-title"><span class="fa fa-sign-out"></span> Cerrar <strong>Sesión</strong> ?</div>
         <div class="mb-content">
-          <p>Are you sure you want to log out?</p>
-          <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+          <p>Está seguro de cerrar sesión?</p>
+          <p>Por favor, confirme su opción</p>
         </div>
         <div class="mb-footer">
           <div class="pull-right">
-            <a href="{{ URL::to('plataforma/login') }}" class="btn btn-success btn-lg">Yes</a>
+            <a href="{{ URL::to('plataforma/login') }}" class="btn btn-success btn-lg">Si</a>
             <button class="btn btn-default btn-lg mb-control-close">No</button>
           </div>
         </div>

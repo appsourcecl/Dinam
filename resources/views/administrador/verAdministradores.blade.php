@@ -51,10 +51,10 @@
                 @foreach ($administradores as $administrador)
                 <tr>
                   <td>
-                    {{$administrador->nombre}}
+                    {{ucwords($administrador->nombre)}}
                   </td>
                   <td>
-                    {{$administrador->apellido}}
+                    {{ucwords($administrador->apellido)}}
                   </td>
                   <td>
                     {{$administrador->email}}

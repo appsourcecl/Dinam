@@ -40,6 +40,9 @@ class HoraController extends Controller
     if($request->profesional_id == "")
     {
       $data['todos_profesionales'] = true;
+      $data['profesionales'] = Profesional::select('nombre','apellido','id')
+      ->orderBy('apellido', 'desc')
+      ->get();
     }else{
       $data['todos_profesionales'] = false;
       $data['profesional'] = Profesional::select('nombre','apellido','id')
