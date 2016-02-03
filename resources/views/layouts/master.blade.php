@@ -61,8 +61,8 @@
   <!-- END MESSAGE BOX-->
 
   <!-- START PRELOADS -->
-  <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
-  <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+  <audio id="audio-alert" src="{{ URL::asset('audio/alert.mp3') }}" preload="auto"></audio>
+  <audio id="audio-fail" src="{{ URL::asset('audio/fail.mp3') }}" preload="auto"></audio>
   <!-- END PRELOADS -->
 
   <!-- START SCRIPTS -->

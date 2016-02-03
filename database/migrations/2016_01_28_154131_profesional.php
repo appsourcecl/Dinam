@@ -14,9 +14,11 @@ class Profesional extends Migration
   {
     Schema::create('profesionales', function (Blueprint $table) {
       $table->increments('id');
+      $table->string('rut')->nullable();
       $table->string('nombre');
       $table->string('apellido');
-      $table->string('email')->unique();
+      $table->string('email')->nullable();
+      $table->string('celular')->nullable();
       $table->string('password', 255);
       $table->rememberToken();
       $table->timestamps();
