@@ -18,7 +18,7 @@
 
         </div>
         <div class="panel-body">
-          <a href="{{ URL::to('paciente/ver-pacientees') }}" class="btn btn-mini btn-info btn-rounded">
+          <a href="{{ URL::to('paciente/ver-pacientes') }}" class="btn btn-mini btn-info btn-rounded">
             <i class="fa fa-reply-all"></i>Volver al listado de pacientes
           </a>
           <br><br><br>
@@ -38,7 +38,18 @@
           @endif
 
           <div class="form-group">
-            <label class="col-md-3 col-xs-12 control-label">Nombre</label>
+            <label class="col-md-3 col-xs-12 control-label">Rut *</label>
+            <div class="col-md-6 col-xs-12">
+              <div class="input-group">
+                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                <input type="text" name="rut" class="form-control">
+              </div>
+              <span class="help-block">Ingrese el nombre del paciente</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 col-xs-12 control-label">Nombre *</label>
             <div class="col-md-6 col-xs-12">
               <div class="input-group">
                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -49,7 +60,7 @@
           </div>
 
           <div class="form-group">
-            <label class="col-md-3 col-xs-12 control-label">Apellido </label>
+            <label class="col-md-3 col-xs-12 control-label">Apellido *</label>
             <div class="col-md-6 col-xs-12">
               <div class="input-group">
                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -66,21 +77,31 @@
                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                 <input type="text" name="email" class="form-control">
               </div>
-              <span class="help-block">Ingrese el email del paciente</span>
+
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-md-3 col-xs-12 control-label">Password</label>
+            <label class="col-md-3 col-xs-12 control-label">Teléfono </label>
             <div class="col-md-6 col-xs-12">
               <div class="input-group">
                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                <input type="password" name="password" class="form-control">
+                <input type="text" name="numero_telefono" class="form-control">
               </div>
-              <span class="help-block">Ingrese el password del paciente</span>
+
             </div>
           </div>
 
+          <div class="form-group">
+            <label class="col-md-3 col-xs-12 control-label">Celular </label>
+            <div class="col-md-6 col-xs-12">
+              <div class="input-group">
+                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                <input type="text" name="celular" class="form-control">
+              </div>
+
+            </div>
+          </div>
         </div>
         <div class="panel-footer">
           <input type="submit" class="btn btn-success" value="Ingresar paciente" />

@@ -66,7 +66,7 @@
                     {{ucwords($paciente->apellido)}}
                   </td>
                   <td>
-                    {{$paciente->numero}}
+                    {{$paciente->numero_telefono}}
                   </td>
                   <td>
                     {{$paciente->email}}

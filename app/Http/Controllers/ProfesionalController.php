@@ -49,7 +49,7 @@ class ProfesionalController extends Controller
     $rules = [
       'nombre' => 'required',
       'apellido' => 'required',
-      'email' => 'required||unique:profesionales',
+      'email' => 'required|unique:profesionales',
       'password' => 'required'
     ];
     //Valido los campos
