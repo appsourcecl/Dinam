@@ -12,6 +12,9 @@
 
   <!-- CSS INCLUDE -->
   <link rel="stylesheet" type="text/css" id="theme" href="{{ URL::asset('css/theme-default.css') }}"/>
+  <link rel="stylesheet" type="text/css" id="theme" href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.css"/>
+
+
   <!-- EOF CSS INCLUDE -->
 </head>
 <body>
@@ -95,7 +98,7 @@
   <script type='text/javascript' src="{{ URL::asset('js/plugins/jquery-validation/jquery.validate.js') }}"></script>
 
   <script type="text/javascript" src="{{ URL::asset('js/plugins/moment.min.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js"></script>
   <script type="text/javascript" src="{{ URL::asset('js/plugins/fullcalendar/lang/es.js') }}"></script>
 
   <!-- END THIS PAGE PLUGINS-->

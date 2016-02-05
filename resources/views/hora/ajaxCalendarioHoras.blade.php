@@ -35,15 +35,15 @@
 </div>
 
 <div class="message-box animated fadeIn" data-sound="alert" id="message-box-hora">
-  <div class="mb-container">
+  <div class="mb-container" style="top:0%;">
     <div class="mb-middle">
       <div class="mb-title"><span class="fa fa-clock-o"></span> Registrar : <span id="hora_seleccionada"></span></div>
-      <div class="mb-content">
+      <div class="mb-content" >
         <form>
           <br>
           <div class="row">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="form-group">
                 <label class="col-md-3 control-label">Profesional</label>
                 <div class="col-md-9">
@@ -56,6 +56,91 @@
                   <span class="help-block"><br></span>
                 </div>
               </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">Especialidad</label>
+                <div class="col-md-9">
+                  <select name="profesional_id" class="form-control">
+                    <option value=""></option>
+                    @foreach ($profesionales as $profesional)
+                    <option value="{{$profesional->id}}">{{ ucwords($profesional->nombre." ".$profesional->apellido) }}</option>
+                    @endforeach
+                  </select>
+                  <span class="help-block"><br></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">Rut Paciente</label>
+                <div class="col-md-9">
+                  <input type="text" name="paciente_rut" placeholder="12345678-5" class="form-control">
+                  <span class="help-block"><span class="btn btn-info btn-xs ">Comprobar paciente</span></span>
+                  <br><br>
+                </div>
+              </div>
+              <div id="datos_paciente">
+                <table class="table table-bordered table-condensed">
+                  <tr>
+                    <td colspan="3">
+                      <label class="control-label">Datos personales del paciente</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Rut
+                    </th>
+                    <th>
+                      Nombre
+                    </th>
+                    <th>
+                      Apellido
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <th>
+                      <input class="form-control" placeholder="Rut" />
+                    </th>
+                    <th>
+                      <input class="form-control" placeholder="Nombre" />
+                    </th>
+                    <th>
+                      <input class="form-control" placeholder="Apellido" />
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      Número
+                    </th>
+                    <th>
+                      Celular
+                    </th>
+                    <th>
+                      E-mail
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <input class="form-control" placeholder="Número" />
+                    </th>
+                    <th>
+                      <input class="form-control" placeholder="Celular" />
+                    </th>
+                    <th>
+                      <input class="form-control" placeholder="E-mail" />
+                    </th>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-3 control-label">Comentario</label>
+                <div class="col-md-9">
+                  <textarea type="text" name="paciente_rut" placeholder="12345678-5" class="form-control"></textarea>
+                </div>
+              </div>
+
+
             </form>
           </div>
           <div class="mb-footer">
@@ -67,6 +152,11 @@
     </div>
 
     <script>
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
     $('#calendario').fullCalendar({
       defaultView: 'agendaWeek',
       allDaySlot: false,
@@ -74,6 +164,11 @@
         left: 'prev,next today myCustomButton',
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
+      },
+      businessHours: {
+        start: '10:00', // hora final
+        end: '18:00', // hora inicial
+        dow: [ 1, 2, 3, 4, 5 ] // dias de semana, 0=Domingo
       },
       dayClick: function(date, jsEvent, view) {
         //alert('Clicked on: ' + date.format());

@@ -7329,3 +7329,8 @@ li.ext_zip {
 .x-navigation-minimized .xn-logo{
 display:none;
 }
+
+
+.fc-nonbusiness {
+  background: #929292 !important; 
+}
