@@ -54,6 +54,13 @@ class HoraController extends Controller
     return view('hora.ajaxCalendarioHoras',$data);
   }
 
+  public function getAjaxBuscarPaciente(Request $request)
+  {
+    $data['paciente_rut'] = $request->paciente_rut;
+    
+    return response::Json($data);
+  }
+
   public function getAjaxVerHoras()
   {
     $month  = date('m');
