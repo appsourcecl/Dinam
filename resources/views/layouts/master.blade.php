@@ -87,10 +87,12 @@
   <script type='text/javascript' src="{{ URL::asset('js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
   <script type='text/javascript' src="{{ URL::asset('js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
   <script type='text/javascript' src="{{ URL::asset('js/plugins/bootstrap/bootstrap-datepicker.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/plugins/bootstrap/bootstrap-timepicker.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/plugins/owl/owl.carousel.min.js') }}"></script>
 
   <script type="text/javascript" src="{{ URL::asset('js/plugins/moment.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/plugins/daterangepicker/daterangepicker.js') }}"></script>
+
   <script type="text/javascript" src="{{ URL::asset('js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 
   <script type='text/javascript' src="{{ URL::asset('js/plugins/validationengine/languages/jquery.validationEngine-en.js') }}"></script>

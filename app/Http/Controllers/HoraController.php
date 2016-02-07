@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Response;
 use App\Profesional;
 use App\Hora;
+use App\Especialidad;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -36,7 +37,7 @@ class HoraController extends Controller
   {
     $data['fecha'] = $request->fecha;
     $data['arrFecha'] = explode("-",$data['fecha']);
-
+    $data['especialidades'] = Especialidad::orderBy('nombre','asc')->get();
     if($request->profesional_id == "")
     {
       $data['todos_profesionales'] = true;

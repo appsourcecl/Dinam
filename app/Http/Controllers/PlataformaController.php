@@ -7,6 +7,10 @@ use Validator;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Administrador;
+use App\Especialidad;
+use App\Profesional;
+use App\Paciente;
+use App\Hora;
 
 class PlataformaController extends Controller
 {
@@ -62,7 +66,13 @@ class PlataformaController extends Controller
   public function getPrincipal(Request $request)
   {
     $data['title'] = "Principal";
-    return view('layouts.construccion',$data);
+    $data['total_horas'] = Hora::count();
+    $data['total_pacientes'] = Paciente::count();
+    $data['total_profesionales'] = Profesional::count();
+    $data['total_especialidades'] = Especialidad::count();
+
+
+    return view('plataforma.principal',$data);
   }
 
   public function getConfiguracion(Request $request)

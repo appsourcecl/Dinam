@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Requests;
+use Response;
 use App\Http\Controllers\Controller;
 use App\Profesional;
 use App\Especialidad;
