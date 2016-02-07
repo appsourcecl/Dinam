@@ -6,3 +6,5 @@ Se obtendrá un prototipo funcional de cada módulo de manera semanal.
 **Semana 1** : Creación de login y estructura de la plantilla del sistema
 
 **Semana 2** : Creación de mantenedores de todas las entidades del sistema
+
+**Semana 3** : Funcionalidad de registro y visualización de horas 
