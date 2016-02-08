@@ -5,56 +5,55 @@
 
 <div class="row">
   <div class="col-md-12">
-    <form action="{{ URL::to('profesional/editar-profesional') }}" method="post" class="form-horizontal">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      <input type="hidden" name="id" value="{{ $profesional->id }}">
-      <div class="panel panel-default">
-        <div class="panel-heading ui-draggable-handle">
-          <div class="panel-title">
-            <h3>Profesional : {{ ucwords($profesional->nombre." ".$profesional->apellido) }}</h3>
-          </div>
-          <ul class="panel-controls panel-controls-title">
-            <li><a href="#" class="panel-fullscreen rounded"><span class="fa fa-expand"></span></a></li>
-          </ul>
-
+    <div class="panel panel-default">
+      <div class="panel-heading ui-draggable-handle">
+        <div class="panel-title">
+          <h3>Profesional : {{ ucwords($profesional->nombre." ".$profesional->apellido) }}</h3>
         </div>
-        <div class="panel-body">
-          <a href="{{ URL::to('profesional/ver-profesionales') }}" class="btn btn-mini btn-info btn-rounded">
-            <i class="fa fa-reply-all"></i>Volver al listado de profesionales
-          </a>
-          <br><br>
+        <ul class="panel-controls panel-controls-title">
+          <li><a href="#" class="panel-fullscreen rounded"><span class="fa fa-expand"></span></a></li>
+        </ul>
 
-          <div class="panel panel-default tabs">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li class="active"><a href="#tab-informacion" role="tab" data-toggle="tab" aria-expanded="true">Información</a></li>
-              <li class=""><a href="#tab-horas" role="tab" data-toggle="tab" aria-expanded="false">Horas médicas</a></li>
-              <li class=""><a href="#tab-mensajes" role="tab" data-toggle="tab" aria-expanded="false">Mensajes</a></li>
-            </ul>
-            <div class="panel-body tab-content">
-              <div class="tab-pane active" id="tab-informacion">
-                @if (count($errors) > 0)
-                <div class="row">
-                  <div class="alert alert-danger">
-                    <ul>
-                      @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                      @endforeach
-                    </ul>
-                  </div>
-                </center>
-              </div>
-            </div>
-            @endif
-            @if (! empty(Session::get('message')))
-            <div class="row">
-              <center>
-                <div class="alert alert-success">
-                  {{Session::get('message')}}
+      </div>
+      <div class="panel-body">
+        <a href="{{ URL::to('profesional/ver-profesionales') }}" class="btn btn-mini btn-info btn-rounded">
+          <i class="fa fa-reply-all"></i>Volver al listado de profesionales
+        </a>
+        <br><br>
+
+        <div class="panel panel-default tabs">
+          <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li class="active"><a href="#tab-informacion" role="tab" data-toggle="tab" aria-expanded="true">Información</a></li>
+            <li class=""><a href="#tab-horas" role="tab" data-toggle="tab" aria-expanded="false">Horas médicas</a></li>
+            <li class=""><a href="#tab-mensajes" role="tab" data-toggle="tab" aria-expanded="false">Mensajes</a></li>
+          </ul>
+          <div class="panel-body tab-content">
+            <div class="tab-pane active" id="tab-informacion">
+              @if (count($errors) > 0)
+              <div class="row">
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
                 </div>
               </center>
             </div>
-            @endif
-
+          </div>
+          @endif
+          @if (! empty(Session::get('message')))
+          <div class="row">
+            <center>
+              <div class="alert alert-success">
+                {{Session::get('message')}}
+              </div>
+            </center>
+          </div>
+          @endif
+          <form action="{{ URL::to('profesional/editar-profesional') }}" method="post" class="form-horizontal">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="id" value="{{ $profesional->id }}">
             <div class="form-group">
               <label class="col-md-3 col-xs-12 control-label">Nombre</label>
               <div class="col-md-6 col-xs-12">
@@ -135,27 +134,28 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="tab-pane" id="tab-horas">
-            ....
-          </div>
-          <div class="tab-pane" id="tab-mensajes">
-            ....
-          </div>
-
+          </form>
         </div>
+        <div class="tab-pane" id="tab-horas">
+          ....
+        </div>
+        <div class="tab-pane" id="tab-mensajes">
+          ....
+        </div>
+
       </div>
-
-
-
-
-
     </div>
-    <div class="panel-footer">
-      <input type="submit" class="btn btn-success" value="Editar profesional" />
-    </div>
+
+
+
+
+
   </div>
-</form>
+  <div class="panel-footer">
+    <input type="submit" class="btn btn-success" value="Editar profesional" />
+  </div>
+</div>
+
 </div>
 </div>
 

@@ -78,6 +78,6 @@ class PlataformaController extends Controller
   public function getConfiguracion(Request $request)
   {
     $data['title'] = "Configuración";
-    return view('layouts.construccion',$data);
+    return view('plataforma.configuracion',$data);
   }
 }
