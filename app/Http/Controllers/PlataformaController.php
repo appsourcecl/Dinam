@@ -11,6 +11,7 @@ use App\Especialidad;
 use App\Profesional;
 use App\Paciente;
 use App\Hora;
+use App\Configuracion;
 
 class PlataformaController extends Controller
 {
@@ -77,7 +78,17 @@ class PlataformaController extends Controller
 
   public function getConfiguracion(Request $request)
   {
+    $data['configuracion'] = Configuracion::first();
     $data['title'] = "Configuración";
     return view('plataforma.configuracion',$data);
+  }
+
+  public function postEditarConfiguracion(Request $request)
+  {
+    $configuracion = Configuracion::find(1);
+    $configuracion->nombre = $request->nombre;
+    $configuracion->save();
+    $request->session()->flash('message', 'Configuración editada con éxito');
+    return redirect('plataforma/configuracion');
   }
 }

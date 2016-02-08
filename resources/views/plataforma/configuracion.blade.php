@@ -23,13 +23,23 @@
           </ul>
           <div class="panel-body tab-content">
             <div class="tab-pane active" id="tab-principal">
-              <form action="{{ URL::to('principal/editar-configuracion') }}" method="post" class="form-horizontal">
+              @if (! empty(Session::get('message')))
+              <div class="row">
+                <center>
+                  <div class="alert alert-success">
+                    {{Session::get('message')}}
+                  </div>
+                </center>
+              </div>
+              @endif
+              <form action="{{ URL::to('plataforma/editar-configuracion') }}" method="post" class="form-horizontal">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                   <label class="col-md-3 col-xs-12 control-label">Nombre organización</label>
                   <div class="col-md-6 col-xs-12">
                     <div class="input-group">
                       <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                      <input type="text" value="" name="organizacion" class="form-control">
+                      <input type="text" value="{{ $configuracion->nombre }}" name="nombre" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -38,7 +48,7 @@
                   <div class="col-md-6 col-xs-12">
                     <div class="input-group">
                       <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                      <input type="text" value="" name="organizacion" class="form-control">
+                      <input type="text" value="{{ $configuracion->descripcion }}" name="organizacion" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -52,11 +62,11 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-md-3 col-xs-12 control-label">Correo principal</label>
+                  <label class="col-md-3 col-xs-12 control-label">Email principal</label>
                   <div class="col-md-6 col-xs-12">
                     <div class="input-group">
                       <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                      <input type="text" value="" name="email" class="form-control">
+                      <input type="text" value="{{ $configuracion->email }}" name="email" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -65,7 +75,7 @@
                   <div class="col-md-6 col-xs-12">
                     <div class="input-group">
                       <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                      <input type="text" value="" name="telefono" class="form-control">
+                      <input type="text" value="" name="{{ $configuracion->telefono }}" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -74,7 +84,7 @@
                   <div class="col-md-6 col-xs-12">
                     <div class="input-group">
                       <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                      <input type="text" value="" name="telefono_secundario" class="form-control">
+                      <input type="text" value="" name="{{ $configuracion->telefono_secundario }}" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -82,10 +92,19 @@
                   <label class="col-md-3 col-xs-12 control-label">Información</label>
                   <div class="col-md-6 col-xs-12">
                     <div class="input-group">
-                      <textarea class="form-control" name="informacion"></textarea>
+                      <textarea class="form-control" name="informacion">{{ $configuracion->informacion }}</textarea>
                     </div>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-md-3 col-xs-12 control-label">Última modificación</label>
+                  <div class="col-md-6 col-xs-12">
+                    <div class="input-group">
+                      <h6>{{ $configuracion->updated_at }}</h6>
+                    </div>
+                  </div>
+                </div>
+                <input type="submit" class="btn btn-success" value="Editar configuración" />
               </form>
             </div>
             <div class="tab-pane" id="tab-horas">
@@ -99,7 +118,7 @@
         </div>
       </div>
       <div class="panel-footer">
-        <input type="submit" class="btn btn-success" value="Editar profesional" />
+
       </div>
     </div>
   </form>
