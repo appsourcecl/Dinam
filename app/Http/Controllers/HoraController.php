@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Response;
 use App\Profesional;
 use App\Hora;
+use App\Paciente;
 use App\Especialidad;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -57,7 +58,28 @@ class HoraController extends Controller
   public function getAjaxBuscarPaciente(Request $request)
   {
     $data['paciente_rut'] = $request->paciente_rut;
-    
+    $data['paciente'] = Paciente::where('rut','like','%'.$data['paciente_rut']."%")->first();
+    if(isset($data['paciente']))
+    {
+      $data['estado'] = true;
+    }else{
+      $data['estado'] = false;
+    }
+    return response::Json($data);
+  }
+
+  public function postAjaxIngresarHora(Request $request)
+  {
+
+    $hora = new Hora;
+    $fecha = explode("-",$request->dia);
+    $hora->fecha_hora = $fecha[2]."-".$fecha[1]."-".$fecha[0]." ".$request->hora;
+    $hora->profesional_id = $request->profesional_id;
+    $hora->especialidad_id = $request->especialidad_id;
+    $hora->paciente_id = $request->paciente_id;
+    $hora->comentario = $request->comentario;
+    $hora->save();
+    $data['estado'] = true;
     return response::Json($data);
   }
 

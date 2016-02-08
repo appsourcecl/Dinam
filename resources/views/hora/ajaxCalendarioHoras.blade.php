@@ -39,7 +39,9 @@
     <div class="mb-middle">
       <div class="mb-title"><span class="fa fa-clock-o"></span> Registrar : <span id="hora_seleccionada"></span></div>
       <div class="mb-content" >
-        <form>
+        <form id="formulario_hora">
+          <input type="hidden" id="paciente_comprobado" name="paciente_comprobado" value="false" />
+          <input type="hidden" id="paciente_id" name="paciente_id" value="false" />
           <br>
           <div class="row">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -52,7 +54,7 @@
                       <div class="col-md-9">
                         <div class="input-group">
                           <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                          <input id="dia" type="text" class="form-control datepicker"  name="dia" value="" data-date="06-06-2014" data-date-format="dd-mm-yyyy">
+                          <input name="dia" id="dia" type="text" class="form-control datepicker"  name="dia" value="" data-date="06-06-2014" data-date-format="dd-mm-yyyy">
                         </div>
                       </div>
                     </div>
@@ -63,7 +65,7 @@
                       <div class="col-md-9">
                         <div class="input-group bootstrap-timepicker timepicker">
                           <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
-                          <input id="hora" type="text" class="form-control timepicker24">
+                          <input name="hora" id="hora" type="text" class="form-control timepicker24">
 
                         </div>
                       </div>
@@ -76,7 +78,6 @@
                       <label class="col-md-3 control-label">Profesional</label>
                       <div class="col-md-9">
                         <select name="profesional_id" class="form-control">
-                          <option value="">Todos los profesionales</option>
                           @foreach ($profesionales as $profesional)
                           <option value="{{$profesional->id}}">{{ ucwords($profesional->nombre." ".$profesional->apellido) }}</option>
                           @endforeach
@@ -88,7 +89,7 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label">Especialidad</label>
                       <div class="col-md-8">
-                        <select name="profesional_id" class="form-control">
+                        <select name="especialidad_id" class="form-control">
                           @foreach ($especialidades as $especialidad)
                           <option value="{{$especialidad->id}}">{{ ucwords($especialidad->nombre) }}</option>
                           @endforeach
@@ -102,7 +103,7 @@
                     <div class="form-group">
                       <label class="col-md-3 control-label">Rut Paciente</label>
                       <div class="col-md-9">
-                        <input type="text" id="paciente_rut" name="paciente_rut" placeholder="12345678-5" class="form-control">
+                        <input type="text" id="paciente_rut_buscador" name="paciente_rut" placeholder="12345678-5" class="form-control">
                         <span class="help-block"><span onClick="buscar_paciente()" class="btn btn-info btn-xs ">Comprobar paciente</span> <span id="cargando_paciente"></span>
                       </div>
                     </div>
@@ -131,13 +132,13 @@
 
                   <tr>
                     <th>
-                      <input name="rut" class="form-control" placeholder="Rut" />
+                      <input id="paciente_rut" name="rut" class="form-control" placeholder="Rut" />
                     </th>
                     <th>
-                      <input name="nombre" class="form-control" placeholder="Nombre" />
+                      <input id="paciente_nombre" name="nombre" class="form-control" placeholder="Nombre" />
                     </th>
                     <th>
-                      <input name="apellido" class="form-control" placeholder="Apellido" />
+                      <input id="paciente_apellido" name="apellido" class="form-control" placeholder="Apellido" />
                     </th>
                   </tr>
                   <tr>
@@ -153,13 +154,13 @@
                   </tr>
                   <tr>
                     <th>
-                      <input name="numero_telefono" class="form-control" placeholder="Número" />
+                      <input id="paciente_numero_telefono" name="numero_telefono" class="form-control" placeholder="Número" />
                     </th>
                     <th>
-                      <input name="celular" class="form-control" placeholder="Celular" />
+                      <input id="paciente_celular" name="celular" class="form-control" placeholder="Celular" />
                     </th>
                     <th>
-                      <input name="email" class="form-control" placeholder="E-mail" />
+                      <input id="paciente_email" name="email" class="form-control" placeholder="E-mail" />
                     </th>
                   </tr>
                 </table>
@@ -168,7 +169,7 @@
               <div class="form-group">
                 <label class="col-md-3 control-label">Comentario</label>
                 <div class="col-md-9">
-                  <textarea type="text" name="paciente_rut" class="form-control"></textarea>
+                  <textarea type="text" name="comentario" class="form-control"></textarea>
                 </div>
               </div>
 
@@ -176,9 +177,10 @@
             </form>
           </div>
           <div class="mb-footer">
-            <span  class="btn btn-success btn-lg pull-left mb-control-close" >Ingresar hora al sistema</span>
+            <span onclick="ingresar_hora()" class="btn btn-success btn-lg pull-left mb-control-close" >Ingresar hora al sistema</span>&nbsp;&nbsp;&nbsp; <span id="cargando_formulario_hora"></span>
             <span onclick="cancelar_hora()" class="btn btn-danger btn-lg pull-right mb-control-close" >Cancelar</span>
           </div>
+          <br><br>
         </div>
       </div>
     </div>
@@ -219,30 +221,74 @@
 
     function buscar_paciente()
     {
-      var paciente_rut = $("#paciente_rut").val();
-      $.ajax({
-        url: "ajax-buscar-paciente?paciente_rut="+paciente_rut,
-        type: 'GET',
-        dataType: "json",
-        beforeSend: function() {
-          $("#cargando_paciente").html("<img style='width:20px' src='{{ URL::asset('img/loaders/default.gif') }}'></span>");
-        },
-        success: function(data) {
-          console.log(data);
-          $("#cargando_paciente").html("");
-        },
-        error: function(xhr) {
-          console.log(xhr.responseText);
-        }
-      });
+      var paciente_rut = $("#paciente_rut_buscador").val();
+      if(paciente_rut.length >= 4)
+      {
+        $.ajax({
+          url: "ajax-buscar-paciente?paciente_rut="+paciente_rut,
+          type: 'GET',
+          dataType: "json",
+          beforeSend: function() {
+            $("#cargando_paciente").html("<img style='width:20px' src='{{ URL::asset('img/loaders/default.gif') }}'></span>");
+          },
+          success: function(data) {
+            console.log(data);
+            if(data.estado == false)
+            {
+              swal("Ops!", "El rut ingresado no existe (o pudo haberse digitado mal)", "error");
+              $("#paciente_rut").val(paciente_rut);
+              $("#paciente_comprobado").val("false");
+            }else{
+              $("#paciente_comprobado").val("true");
+              $("#paciente_id").val(data.paciente.id);
+              $("#paciente_rut").val(data.paciente.rut);
+              $("#paciente_nombre").val(data.paciente.nombre);
+              $("#paciente_apellido").val(data.paciente.apellido);
+              $("#paciente_numero_telefono").val(data.paciente.numero_telefono);
+              $("#paciente_celular").val(data.paciente.celular);
+              $("#paciente_email").val(data.paciente.email);
+            }
+            $("#cargando_paciente").html("");
+          },
+          error: function(xhr) {
+            console.log(xhr.responseText);
+          }
+        });
+      }else{
+        swal("Ops!", "El rut debe tener al menos 4 carácteres", "error");
+      }
 
     }
 
+    function ingresar_hora()
+    {
+      if($("#paciente_rut").val() == "" || $("#paciente_nombre").val() == "" || $("#paciente_apellido").val() == "" || $("#dia").val() == "" || $("#hora").val() == "")
+      {
+        swal("Ops!", "Debe completar los campos obligatorios de la hora", "error");
+      }else{
+        $.ajax({
+          url: "ajax-ingresar-hora",
+          type: 'POST',
+          data : $("#formulario_hora").serialize(),
+          dataType: "json",
+          beforeSend: function() {
+            $("#cargando_formulario_hora").html("<img style='width:35px' src='{{ URL::asset('img/loaders/default.gif') }}'></span>");
+          },
+          success: function(data) {
+            console.log(data);
+            if(data.estado == true)
+            {
+              $("#cargando_formulario_hora").html("");
+              swal('Hora ingresada', 'La hora ha sido ingresada correctamente !' , 'success');
+            }
+          },
+          error: function(xhr) {
+              swal('Ops !', 'Hubo un error al ingresar la hora, por favor revise los datos' , 'error');
+            console.log(xhr.responseText);
+          }
 
-
-
-
-
-
+        });
+      }
+    }
 
     </script>

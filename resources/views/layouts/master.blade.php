@@ -103,6 +103,9 @@
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.js"></script>
   <script type="text/javascript" src="{{ URL::asset('js/plugins/fullcalendar/lang/es.js') }}"></script>
 
+  <script src="{{ URL::asset('bower_components/sweetalert/dist/sweetalert.min.js') }}"></script>
+   <link rel="stylesheet" type="text/css" href="{{ URL::asset('bower_components/sweetalert/dist/sweetalert.css') }}">
+
   <!-- END THIS PAGE PLUGINS-->
 
   <!-- START TEMPLATE -->

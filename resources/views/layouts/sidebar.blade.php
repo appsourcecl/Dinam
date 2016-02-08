@@ -21,12 +21,8 @@
         <li>
             <a href="{{ URL::to('plataforma/principal') }}"><span class="fa fa-desktop"></span> <span class="xn-text">Inicio</span></a>
         </li>
-        <li class="xn-openable">
-            <a href="#"><span class="fa fa-calendar"></span> <span class="xn-text">Horas</span></a>
-            <ul>
-                <li><a href="{{ URL::to('hora/ver-horas') }}"><span class="fa fa-clock-o"></span> Ver horas</a></li>
-                <li><a href="{{ URL::to('hora/reservar-hora') }}"><span class="fa fa-edit"></span> Reservar hora</a></li>
-            </ul>
+        <li>
+            <a href="{{ URL::to('hora/ver-horas') }}"><span class="fa fa-calendar"></span> <span class="xn-text">Horas</span></a>
         </li>
         <li>
             <a href="{{ URL::to('paciente/ver-pacientes') }}"><span class="fa fa-user"></span> <span class="xn-text">Pacientes</span></a>
