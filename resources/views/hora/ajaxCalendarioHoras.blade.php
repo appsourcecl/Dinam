@@ -17,7 +17,7 @@
       {{ ucwords($profesional->nombre." ".$profesional->apellido) }}
       @endif
     </h2>
-    <span class="label label-success">Instructivo</span> Para generar una hora, usted debe hacer click al calendario
+    <span class="label label-success">Instructivo</span> Para generar una hora, usted debe posicionarse en el calendario y hacer click en una casilla (hora)
   </div>
 </div>
 <div class="row stacked">
