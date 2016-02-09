@@ -13,7 +13,7 @@
   <!-- CSS INCLUDE -->
   <link rel="stylesheet" type="text/css" id="theme" href="{{ URL::asset('css/theme-default.css') }}"/>
   <link rel="stylesheet" type="text/css" id="theme" href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.min.css"/>
-
+  <script type="text/javascript" src="{{ URL::asset('js/plugins/jquery/jquery.min.js') }}"></script>
 
   <!-- EOF CSS INCLUDE -->
 </head>
@@ -70,7 +70,7 @@
 
   <!-- START SCRIPTS -->
   <!-- START PLUGINS -->
-  <script type="text/javascript" src="{{ URL::asset('js/plugins/jquery/jquery.min.js') }}"></script>
+
   <script type="text/javascript" src="{{ URL::asset('js/plugins/jquery/jquery-ui.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/plugins/bootstrap/bootstrap.min.js') }}"></script>
   <!-- END PLUGINS -->

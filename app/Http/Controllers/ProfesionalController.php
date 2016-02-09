@@ -65,6 +65,38 @@ class ProfesionalController extends Controller
     $profesional->apellido = $request->apellido;
     $profesional->email = $request->email;
     $profesional->password = $request->password;
+    $horas_laborales = array();
+    //Horas laborales en para ser transformado en Json y crear un dato en el campo "horas_laborales" del profesional
+    if($request->lunes == "on")
+    {
+      $horas_laborales[] = array( "dow" => 1, "start" => $request->hora_inicio_lunes , "end" => $request->hora_fin_lunes );
+    }
+    if($request->martes == "on")
+    {
+      $horas_laborales[] = array( "dow" => 2, "start" => $request->hora_inicio_martes , "end" => $request->hora_fin_martes );
+    }
+    if($request->miercoles == "on")
+    {
+      $horas_laborales[] = array( "dow" => 3, "start" => $request->hora_inicio_miercoles , "end" => $request->hora_fin_miercoles );
+    }
+    if($request->jueves == "on")
+    {
+      $horas_laborales[] = array( "dow" => 4, "start" => $request->hora_inicio_jueves , "end" => $request->hora_fin_jueves );
+    }
+    if($request->viernes == "on")
+    {
+      $horas_laborales[] = array( "dow" => 5, "start" => $request->hora_inicio_viernes , "end" => $request->hora_fin_viernes );
+    }
+    if($request->sabado == "on")
+    {
+      $horas_laborales[] = array( "dow" => 6, "start" => $request->hora_inicio_sabado , "end" => $request->hora_fin_sabado );
+    }
+    if($request->domingo == "on")
+    {
+      $horas_laborales[] = array( "dow" => 0, "start" => $request->hora_inicio_domingo , "end" => $request->hora_fin_domingo );
+    }
+
+    $profesional->horas_laborales =  json_encode($horas_laborales);
     $profesional->save();
 
     //Ingreso las especialidades del profesional en base al arreglo de checkbox del formulario
@@ -128,31 +160,31 @@ class ProfesionalController extends Controller
     //Horas laborales en para ser transformado en Json y crear un dato en el campo "horas_laborales" del profesional
     if($request->lunes == "on")
     {
-      $horas_laborales[] = array( "dow" => 1, "start" => $request->start_lunes , "end" => $request->end_lunes );
+      $horas_laborales[] = array( "dow" => 1, "start" => $request->hora_inicio_lunes , "end" => $request->hora_fin_lunes );
     }
     if($request->martes == "on")
     {
-      $horas_laborales[] = array( "dow" => 2, "start" => $request->start_martes , "end" => $request->end_martes );
+      $horas_laborales[] = array( "dow" => 2, "start" => $request->hora_inicio_martes , "end" => $request->hora_fin_martes );
     }
     if($request->miercoles == "on")
     {
-      $horas_laborales[] = array( "dow" => 3, "start" => $request->start_miercoles , "end" => $request->end_miercoles );
+      $horas_laborales[] = array( "dow" => 3, "start" => $request->hora_inicio_miercoles , "end" => $request->hora_fin_miercoles );
     }
     if($request->jueves == "on")
     {
-      $horas_laborales[] = array( "dow" => 4, "start" => $request->start_jueves , "end" => $request->end_jueves );
+      $horas_laborales[] = array( "dow" => 4, "start" => $request->hora_inicio_jueves , "end" => $request->hora_fin_jueves );
     }
     if($request->viernes == "on")
     {
-      $horas_laborales[] = array( "dow" => 5, "start" => $request->start_viernes , "end" => $request->end_viernes );
+      $horas_laborales[] = array( "dow" => 5, "start" => $request->hora_inicio_viernes , "end" => $request->hora_fin_viernes );
     }
     if($request->sabado == "on")
     {
-      $horas_laborales[] = array( "dow" => 6, "start" => $request->start_sabado , "end" => $request->end_sabado );
+      $horas_laborales[] = array( "dow" => 6, "start" => $request->hora_inicio_sabado , "end" => $request->hora_fin_sabado );
     }
     if($request->domingo == "on")
     {
-      $horas_laborales[] = array( "dow" => 0, "start" => $request->start_domingo , "end" => $request->end_domingo );
+      $horas_laborales[] = array( "dow" => 0, "start" => $request->hora_inicio_domingo , "end" => $request->hora_fin_domingo );
     }
 
     $profesional->horas_laborales =  json_encode($horas_laborales);
