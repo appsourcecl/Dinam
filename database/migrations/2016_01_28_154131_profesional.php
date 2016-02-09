@@ -19,8 +19,8 @@ class Profesional extends Migration
       $table->string('apellido');
       $table->string('email')->nullable();
       $table->string('celular')->nullable();
+      $table->string('horas_laborales',2000)->nullable();
       $table->string('password', 255);
-      $table->rememberToken();
       $table->timestamps();
     });
   }

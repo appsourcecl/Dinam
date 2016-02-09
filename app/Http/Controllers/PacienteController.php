@@ -102,7 +102,7 @@ class PacienteController extends Controller
       $paciente->email = $request->email;
       $paciente->numero_telefono = $request->numero_telefono;
       $paciente->celular = $request->celular;
-      $paciente->save();
+      $paciente->update();
 
       $request->session()->flash('message', 'paciente editado con éxito');
       return redirect('paciente/detalle-paciente?id='.$data['id']);

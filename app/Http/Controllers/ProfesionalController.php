@@ -123,7 +123,41 @@ class ProfesionalController extends Controller
     $profesional->apellido = $request->apellido;
     $profesional->email = $request->email;
     $profesional->password = $request->password;
-    $profesional->save();
+
+    $horas_laborales = array();
+    //Horas laborales en para ser transformado en Json y crear un dato en el campo "horas_laborales" del profesional
+    if($request->lunes == "on")
+    {
+      $horas_laborales[] = array( "dow" => 1, "start" => $request->start_lunes , "end" => $request->end_lunes );
+    }
+    if($request->martes == "on")
+    {
+      $horas_laborales[] = array( "dow" => 2, "start" => $request->start_martes , "end" => $request->end_martes );
+    }
+    if($request->miercoles == "on")
+    {
+      $horas_laborales[] = array( "dow" => 3, "start" => $request->start_miercoles , "end" => $request->end_miercoles );
+    }
+    if($request->jueves == "on")
+    {
+      $horas_laborales[] = array( "dow" => 4, "start" => $request->start_jueves , "end" => $request->end_jueves );
+    }
+    if($request->viernes == "on")
+    {
+      $horas_laborales[] = array( "dow" => 5, "start" => $request->start_viernes , "end" => $request->end_viernes );
+    }
+    if($request->sabado == "on")
+    {
+      $horas_laborales[] = array( "dow" => 6, "start" => $request->start_sabado , "end" => $request->end_sabado );
+    }
+    if($request->domingo == "on")
+    {
+      $horas_laborales[] = array( "dow" => 0, "start" => $request->start_domingo , "end" => $request->end_domingo );
+    }
+
+    $profesional->horas_laborales =  json_encode($horas_laborales);
+
+    $profesional->update();
 
     $profesional_especialidad = new profesional_especialidad;
     profesional_especialidad::where('profesional_id', $profesional->id)->delete();

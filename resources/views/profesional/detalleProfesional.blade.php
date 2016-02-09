@@ -122,18 +122,89 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-md-3 col-xs-12 control-label">
-                  <span class="btn btn-xs btn-info"><i class="fa fa-calendar"></i> Días/horas laborales </span>
+                  <span onclick="ver_dias()" class="btn btn-xs btn-info"><i class="fa fa-calendar"></i> Días/horas laborales </span>
                 </div>
                 <div class="col-md-6 col-xs-12">
                 </div>
               </div>
-              <div class="row">
+              <div id="dias_laborales" style="display:none;" class="row">
                 <label class="col-md-3 col-xs-12 control-label">Días</label>
                 <div class="col-md-6 col-xs-12">
-
+                  <label class="check">
+                    <div class="icheckbox_minimal-grey" style="position: relative;">
+                      <input {{ $checked }} type="checkbox" name="lunes" class="icheckbox" style="position: absolute; opacity: 0;">
+                      <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+                    </div>
+                  </label>
+                  Lunes
+                  <br><br>
+                  <input name="hora_inicio_lunes" type="text" class="timepicker24"  /> / <input name="hora_fin_lunes" type="text" class="timepicker24"  />
+                  <hr>
+                  <label class="check">
+                    <div class="icheckbox_minimal-grey" style="position: relative;">
+                      <input {{ $checked }} type="checkbox" name="martes" class="icheckbox" style="position: absolute; opacity: 0;">
+                      <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+                    </div>
+                  </label>
+                  Martes
+                  <br><br>
+                  <input type="text" name="hora_inicio_martes" class="timepicker24"  /> / <input name="hora_fin_martes" type="text" class="timepicker24"  />
+                  <hr>
+                  <label class="check">
+                    <div class="icheckbox_minimal-grey" style="position: relative;">
+                      <input {{ $checked }} type="checkbox" name="miercoles" class="icheckbox" style="position: absolute; opacity: 0;">
+                      <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+                    </div>
+                  </label>
+                  Miércoles
+                  <br><br>
+                  <input name="hora_inicio_miercoles" type="text" class="timepicker24"  /> / <input name="hora_fin_miercoles" type="text" class="timepicker24"  />
+                  <hr>
+                  <label class="check">
+                    <div class="icheckbox_minimal-grey" style="position: relative;">
+                      <input {{ $checked }} type="checkbox" name="jueves" class="icheckbox" style="position: absolute; opacity: 0;">
+                      <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+                    </div>
+                  </label>
+                  Jueves
+                  <br><br>
+                  <input name="hora_inicio_jueves" type="text" class="timepicker24"  /> / <input name="hora_fin_jueves" type="text" class="timepicker24"  />
+                  <hr>
+                  <label class="check">
+                    <div class="icheckbox_minimal-grey" style="position: relative;">
+                      <input {{ $checked }} type="checkbox" name="viernes" class="icheckbox" style="position: absolute; opacity: 0;">
+                      <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+                    </div>
+                  </label>
+                  Viernes
+                  <br><br>
+                  <input name="hora_inicio_viernes" type="text" class="timepicker24"  /> / <input name="hora_fin_viernes" type="text" class="timepicker24"  />
+                  <hr>
+                  <label class="check">
+                    <div class="icheckbox_minimal-grey" style="position: relative;">
+                      <input {{ $checked }} type="checkbox" name="sabado" class="icheckbox" style="position: absolute; opacity: 0;">
+                      <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+                    </div>
+                  </label>
+                  Sábado
+                  <br><br>
+                  <input name="hora_inicio_sabado" type="text" class="timepicker24"  /> / <input name="hora_fin_sabado" type="text" class="timepicker24"  />
+                  <hr>
+                  <label class="check">
+                    <div class="icheckbox_minimal-grey" style="position: relative;">
+                      <input  type="checkbox" name="domingo" class="icheckbox" style="position: absolute; opacity: 0;">
+                      <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins>
+                    </div>
+                  </label>
+                  Domingo
+                  <br><br>
+                  <input name="hora_inicio_domingo" type="text" class="timepicker24"  /> / <input name="hora_fin_domingo" type="text" class="timepicker24"  />
+                  <hr>
                 </div>
               </div>
             </div>
+            <br>
+            <input type="submit" class="btn btn-success" value="Editar profesional" />
           </form>
         </div>
         <div class="tab-pane" id="tab-horas">
@@ -152,11 +223,29 @@
 
   </div>
   <div class="panel-footer">
-    <input type="submit" class="btn btn-success" value="Editar profesional" />
+
   </div>
 </div>
 
 </div>
 </div>
+
+<script type="text/javascript">
+
+var dias_laborales = false;
+function ver_dias()
+{
+  if(dias_laborales == false){
+    $("#dias_laborales").show();
+    dias_laborales = true;
+  }else{
+    $("#dias_laborales").hide();
+    dias_laborales = false;
+  }
+}
+
+</script>
+
+</script>
 
 @stop
