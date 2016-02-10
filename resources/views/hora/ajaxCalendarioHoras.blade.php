@@ -28,9 +28,7 @@
     <div class="calendar">
       <div id="calendario"></div>
     </div>
-
     <!-- END CONTENT FRAME BODY -->
-
   </div>
 </div>
 
@@ -77,11 +75,16 @@
                     <div class="form-group">
                       <label class="col-md-3 control-label">Profesional</label>
                       <div class="col-md-9">
+                        @if ($todos_profesionales)
                         <select name="profesional_id" class="form-control">
                           @foreach ($profesionales as $profesional)
                           <option value="{{$profesional->id}}">{{ ucwords($profesional->nombre." ".$profesional->apellido) }}</option>
                           @endforeach
                         </select>
+                        @else
+                        <input type="hidden" name="profesional_id" value="{{ $profesional->id }}">
+                        {{ ucwords($profesional->nombre." ".$profesional->apellido) }}
+                        @endif
                       </div>
                     </div>
                   </td>
@@ -187,9 +190,30 @@
 
     <script>
     $( "#dia" ).datepicker();
+    var horas_laborales =  [];
+    var total_eventos = [];
     //$( "#hora" ).timepicker();
     if($(".timepicker24").length > 0)
     $(".timepicker24").timepicker({minuteStep: 5,showSeconds: true,showMeridian: false});
+    @if ($todos_profesionales == false)
+    @if($profesional->horas_laborales == "")
+
+    @else
+    var horas_laborales =  JSON.parse('{!! $profesional->horas_laborales !!}');
+    @endif
+    @endif
+
+    var horas_ingresadas = [
+      @foreach ($horas as $hora)
+      {
+        title: '{{ $hora->comentario }}',
+        start: moment('{{ $hora->fecha_hora }}').format('YYYY-MM-DD hh:mm'),
+      },
+      @endforeach
+    ];
+
+    total_eventos = horas_laborales.concat(horas_ingresadas);
+    console.log(total_eventos);
 
     $('#calendario').fullCalendar({
       defaultView: 'agendaWeek',
@@ -199,15 +223,14 @@
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-      businessHours: {
-        start: '10:00', // hora final
-        end: '18:00', // hora inicial
-        dow: [ 1, 2, 3, 4, 5 ] // dias de semana, 0=Domingo
-      },
+
+      @if ($todos_profesionales == false)
+      events:  total_eventos,
+      @endif
+
       dayClick: function(date, jsEvent, view) {
-        //alert('Clicked on: ' + date.format());
-        $("#hora_seleccionada").html(date.format("MM-DD-YYYY, h:mm:ss"));
-        $("#dia").val(date.format("MM-DD-YYYY"));
+        $("#hora_seleccionada").html(date.format("DD-MM-YYYY, h:mm:ss"));
+        $("#dia").val(date.format("DD-MM-YYYY"));
         $("#hora").val(date.format("h:mm:ss"));
         $("#message-box-hora").show();
       }
@@ -283,7 +306,7 @@
             }
           },
           error: function(xhr) {
-              swal('Ops !', 'Hubo un error al ingresar la hora, por favor revise los datos' , 'error');
+            swal('Ops !', 'Hubo un error al ingresar la hora, por favor revise los datos' , 'error');
             console.log(xhr.responseText);
           }
 

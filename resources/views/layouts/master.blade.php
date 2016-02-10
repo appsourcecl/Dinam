@@ -80,8 +80,7 @@
   <script type="text/javascript" src="{{ URL::asset('js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/plugins/scrolltotop/scrolltopcontrol.js') }}"></script>
 
-  <script type="text/javascript" src="{{ URL::asset('js/plugins/morris/raphael-min.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/plugins/morris/morris.min.js') }}"></script>
+
   <script type="text/javascript" src="{{ URL::asset('js/plugins/rickshaw/d3.v3.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/plugins/rickshaw/rickshaw.min.js') }}"></script>
   <script type='text/javascript' src="{{ URL::asset('js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
@@ -112,7 +111,7 @@
   <script type="text/javascript" src="{{ URL::asset('js/plugins.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/actions.js') }}"></script>
 
-  <script type="text/javascript" src="{{ URL::asset('js/demo_dashboard.js') }}"></script>
+  
   <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
 
   <!-- END TEMPLATE -->

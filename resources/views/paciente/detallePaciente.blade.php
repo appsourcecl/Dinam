@@ -92,7 +92,7 @@
         <div class="col-md-6 col-xs-12">
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-            <input type="text" value="{{ $paciente->numero_telefono }}" name="email" class="form-control">
+            <input type="text" value="{{ $paciente->numero_telefono }}" name="numero_telefono" class="form-control">
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
         <div class="col-md-6 col-xs-12">
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-              <input type="text" value="{{ $paciente->celular }}" name="email" class="form-control">
+              <input type="text" value="{{ $paciente->celular }}" name="celular" class="form-control">
           </div>
         </div>
       </div>

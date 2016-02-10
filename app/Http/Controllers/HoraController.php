@@ -38,18 +38,29 @@ class HoraController extends Controller
   {
     $data['fecha'] = $request->fecha;
     $data['arrFecha'] = explode("-",$data['fecha']);
-    $data['especialidades'] = Especialidad::orderBy('nombre','asc')->get();
+    //Si consulta por todos los profesionales o si consulta por un solo profesional
     if($request->profesional_id == "")
     {
+      $data['especialidades'] = Especialidad::orderBy('nombre','asc')->get();
       $data['todos_profesionales'] = true;
       $data['profesionales'] = Profesional::select('nombre','apellido','id')
       ->orderBy('apellido', 'desc')
       ->get();
     }else{
+      //Consulto por un profesional es específico
       $data['todos_profesionales'] = false;
-      $data['profesional'] = Profesional::select('nombre','apellido','id')
-      ->where('id', $request->profesional_id)
+      //Detalle del profesional
+      $data['profesional'] = Profesional::where('id', $request->profesional_id)
       ->first();
+      //Especialidades del profesional
+      $data['especialidades'] = Especialidad::select('especialidades.id','especialidades.nombre')
+      ->join('profesional_especialidades', 'profesional_especialidades.especialidad_id', '=', 'especialidades.id')
+      ->where('profesional_id',$request->profesional_id)
+      ->orderBy('nombre','asc')
+      ->get();
+      //Horas solicitadas del profesional
+      $data['horas'] = Hora::where('profesional_id', $request->profesional_id )
+      ->get();
     }
 
     return view('hora.ajaxCalendarioHoras',$data);
