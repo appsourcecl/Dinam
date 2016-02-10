@@ -46,6 +46,21 @@ class HoraController extends Controller
       $data['profesionales'] = Profesional::select('nombre','apellido','id')
       ->orderBy('apellido', 'desc')
       ->get();
+      //Horas solicitadas del profesional
+      $data['horas'] = Hora::select(
+      'especialidades.nombre as especialidad_nombre',
+      'horas.id',
+      'horas.fecha_hora',
+      'horas.comentario',
+      'profesionales.nombre as profesional_nombre',
+      'profesionales.apellido as profesional_apellido',
+      'pacientes.nombre as paciente_nombre',
+      'pacientes.apellido as paciente_apellido',
+      'pacientes.rut as paciente_rut')
+      ->join('pacientes','pacientes.id','=', 'horas.paciente_id')
+      ->join('profesionales','profesionales.id','=','horas.profesional_id')
+      ->join('especialidades','especialidades.id','=','horas.especialidad_id')
+      ->get();
     }else{
       //Consulto por un profesional es específico
       $data['todos_profesionales'] = false;
@@ -54,12 +69,25 @@ class HoraController extends Controller
       ->first();
       //Especialidades del profesional
       $data['especialidades'] = Especialidad::select('especialidades.id','especialidades.nombre')
-      ->join('profesional_especialidades', 'profesional_especialidades.especialidad_id', '=', 'especialidades.id')
+      ->join('profesional_especialidades', 'profesional_especialidades.especialidad_id','=','especialidades.id')
       ->where('profesional_id',$request->profesional_id)
       ->orderBy('nombre','asc')
       ->get();
       //Horas solicitadas del profesional
-      $data['horas'] = Hora::where('profesional_id', $request->profesional_id )
+      $data['horas'] = Hora::select(
+      'especialidades.nombre as especialidad_nombre',
+      'horas.id',
+      'horas.fecha_hora',
+      'horas.comentario',
+      'profesionales.nombre as profesional_nombre',
+      'profesionales.apellido as profesional_apellido',
+      'pacientes.nombre as paciente_nombre',
+      'pacientes.apellido as paciente_apellido',
+      'pacientes.rut as paciente_rut')
+      ->where('horas.profesional_id', $request->profesional_id )
+      ->join('pacientes','pacientes.id','=', 'horas.paciente_id')
+      ->join('profesionales','profesionales.id','=','horas.profesional_id')
+      ->join('especialidades','especialidades.id','=','horas.especialidad_id')
       ->get();
     }
 

@@ -206,7 +206,7 @@
     var horas_ingresadas = [
       @foreach ($horas as $hora)
       {
-        title: '{{ $hora->comentario }}',
+        title: 'Paciente: {{ $hora->paciente_nombre." ".$hora->paciente_apellido }} \n  Profesional : {{ $hora->profesional_nombre." ".$hora->profesional_apellido }} ',
         start: moment('{{ $hora->fecha_hora }}').format('YYYY-MM-DD hh:mm'),
       },
       @endforeach
@@ -223,11 +223,7 @@
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-
-      @if ($todos_profesionales == false)
       events:  total_eventos,
-      @endif
-
       dayClick: function(date, jsEvent, view) {
         $("#hora_seleccionada").html(date.format("DD-MM-YYYY, h:mm:ss"));
         $("#dia").val(date.format("DD-MM-YYYY"));
