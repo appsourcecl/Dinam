@@ -1,0 +1,9 @@
+{
+  "type": "sftp",
+  "host": "54.233.103.107",
+  "username": "ubuntu",
+  "port": 22,
+  "remotePath": "/var/www/Dinam",
+  "uploadOnSave": true,
+  "sshKeyFile": "/home/luis/Documentos/ssh/trade_nuevo.pem"
+}

@@ -11,7 +11,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="col-md-3">
-      <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
+      <div class="widget widget-default widget-item-icon" onclick="#">
         <div class="widget-item-left">
           <span class="fa fa-clock-o"></span>
         </div>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="col-md-3">
-      <div class="widget widget-default widget-item-icon" onclick="location.href='pages-messages.html';">
+      <div class="widget widget-default widget-item-icon" onclick="#">
         <div class="widget-item-left">
           <span class="fa fa-envelope"></span>
         </div>

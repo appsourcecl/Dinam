@@ -15,7 +15,7 @@ use App\Configuracion;
 
 class PlataformaController extends Controller
 {
-
+ 
   //Constructor, donde agrego excepcion del middleware de vista de login
   public function __construct()
   {
@@ -79,13 +79,23 @@ class PlataformaController extends Controller
   public function getConfiguracion(Request $request)
   {
     $data['configuracion'] = Configuracion::first();
+    //En caso de no haber ningún tipo de configuración
+    if($data['configuracion'] == null)
+    {
+      $data['configuracion'] = new Configuracion;
+    }
     $data['title'] = "Configuración";
     return view('plataforma.configuracion',$data);
   }
 
   public function postEditarConfiguracion(Request $request)
   {
-    $configuracion = Configuracion::find(1);
+    $configuracion = Configuracion::first();
+    //En caso de no haber ningún tipo de configuración
+    if($configuracion == null)
+    {
+      $configuracion = new Configuracion;
+    }
     $configuracion->nombre = $request->nombre;
     $configuracion->save();
     $request->session()->flash('message', 'Configuración editada con éxito');
