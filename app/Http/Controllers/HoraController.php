@@ -8,6 +8,7 @@ use App\Profesional;
 use App\Hora;
 use App\Paciente;
 use App\Especialidad;
+use App\Estado_hora;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -42,6 +43,7 @@ class HoraController extends Controller
     if($request->profesional_id == "")
     {
       $data['especialidades'] = Especialidad::orderBy('nombre','asc')->get();
+      $data['estados'] = Estado_hora::orderBy('nombre','desc')->get();
       $data['todos_profesionales'] = true;
       $data['profesionales'] = Profesional::select('nombre','apellido','id')
       ->orderBy('apellido', 'desc')

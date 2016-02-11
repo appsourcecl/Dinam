@@ -71,8 +71,8 @@
                       <label class="col-md-3 control-label">Estado</label>
                       <div class="col-md-9">
                         <select name="profesional_id" class="form-control">
-                          @foreach ($profesionales as $profesional)
-                          <option value="{{$profesional->id}}">{{ ucwords($profesional->nombre." ".$profesional->apellido) }}</option>
+                          @foreach ($estados as $estado)
+                          <option value="{{$estado->id}}">{{ $estado->nombre }}</option>
                           @endforeach
                         </select>
                       </div>
