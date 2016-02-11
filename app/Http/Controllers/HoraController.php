@@ -111,7 +111,7 @@ class HoraController extends Controller
 
   public function postAjaxIngresarHora(Request $request)
   {
-
+    //Creo un modelo para ingresar las horas 
     $hora = new Hora;
     $fecha = explode("-",$request->dia);
     $hora->fecha_hora = $fecha[2]."-".$fecha[1]."-".$fecha[0]." ".$request->hora;
