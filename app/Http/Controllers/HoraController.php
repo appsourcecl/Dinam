@@ -111,13 +111,31 @@ class HoraController extends Controller
 
   public function postAjaxIngresarHora(Request $request)
   {
-    //Creo un modelo para ingresar las horas 
+    //Creo un modelo para ingresar las horas
     $hora = new Hora;
     $fecha = explode("-",$request->dia);
     $hora->fecha_hora = $fecha[2]."-".$fecha[1]."-".$fecha[0]." ".$request->hora;
     $hora->profesional_id = $request->profesional_id;
     $hora->especialidad_id = $request->especialidad_id;
-    $hora->paciente_id = $request->paciente_id;
+    if($request->paciente_comprobado == "false")
+    {
+      $paciente = Paciente::where("rut",$request->rut)->first();
+      if($paciente == null)
+      {
+      $paciente = new Paciente;  
+      }
+      $paciente->rut = $request->rut;
+      $paciente->nombre = $request->nombre;
+      $paciente->apellido = $request->apellido;
+      $paciente->email = $request->email;
+      $paciente->numero_telefono = $request->numero_telefono;
+      $paciente->celular = $request->celular;
+      $paciente->save();
+      $hora->paciente_id = $paciente->id;
+    }else{
+      $hora->paciente_id = $request->paciente_id;
+    }
+
     $hora->estado_hora_id = $request->estado_hora_id;
     $hora->comentario = $request->comentario;
     $hora->save();
