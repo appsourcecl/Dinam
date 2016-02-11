@@ -118,6 +118,7 @@ class HoraController extends Controller
     $hora->profesional_id = $request->profesional_id;
     $hora->especialidad_id = $request->especialidad_id;
     $hora->paciente_id = $request->paciente_id;
+    $hora->estado_hora_id = $request->estado_hora_id;
     $hora->comentario = $request->comentario;
     $hora->save();
     $data['estado'] = true;
