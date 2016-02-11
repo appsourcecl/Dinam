@@ -18,6 +18,10 @@ class Especialidad extends Migration
         $table->string('descripcion',1000)->nullable();
         $table->timestamps();
       });
+
+      DB::table('especialidades')->insert(array(
+            'nombre' => 'Sin especialidad',
+      ));
     }
 
     /**

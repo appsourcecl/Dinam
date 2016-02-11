@@ -14,7 +14,7 @@ class Paciente extends Migration
   {
     Schema::create('pacientes', function (Blueprint $table) {
       $table->increments('id');
-      $table->strin('rut')->unique();
+      $table->string('rut')->unique();
       $table->string('nombre');
       $table->string('apellido');
       $table->string('email')->nullable();

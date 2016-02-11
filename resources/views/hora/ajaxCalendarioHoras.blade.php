@@ -21,17 +21,13 @@
   </div>
 </div>
 <div class="row stacked">
-
-  <!-- END CONTENT FRAME LEFT -->
   <div class="col-md-12">
     <div id="alert_holder"></div>
     <div class="calendar">
       <div id="calendario"></div>
     </div>
-    <!-- END CONTENT FRAME BODY -->
   </div>
 </div>
-
 <div class="message-box animated fadeIn" data-sound="alert" id="message-box-hora">
   <div class="mb-container" style="top:0%;">
     <div class="mb-middle">
@@ -64,10 +60,25 @@
                         <div class="input-group bootstrap-timepicker timepicker">
                           <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                           <input name="hora" id="hora" type="text" class="form-control timepicker24">
-
                         </div>
                       </div>
                     </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">Estado</label>
+                      <div class="col-md-9">
+                        <select name="profesional_id" class="form-control">
+                          @foreach ($profesionales as $profesional)
+                          <option value="{{$profesional->id}}">{{ ucwords($profesional->nombre." ".$profesional->apellido) }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
                   </td>
                 </tr>
                 <tr>
@@ -113,7 +124,6 @@
                   </td>
                 </tr>
               </table>
-
               <div id="datos_paciente">
                 <table class="table table-condensed">
                   <tr>
@@ -168,15 +178,12 @@
                   </tr>
                 </table>
               </div>
-
               <div class="form-group">
                 <label class="col-md-3 control-label">Comentario</label>
                 <div class="col-md-9">
                   <textarea type="text" name="comentario" class="form-control"></textarea>
                 </div>
               </div>
-
-
             </form>
           </div>
           <div class="mb-footer">
@@ -187,7 +194,6 @@
         </div>
       </div>
     </div>
-
     <script>
     $( "#dia" ).datepicker();
     var horas_laborales =  [];

@@ -41,7 +41,7 @@
         <div class="col-md-6 col-xs-12">
           <div class="input-group">
             <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-            <input type="text" value="{{ $profesional->rut }}" name="rut" class="form-control">
+            <input type="text" name="rut" class="form-control">
           </div>
         </div>
       </div>

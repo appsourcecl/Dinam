@@ -21,6 +21,13 @@ class Administrador extends Migration
       $table->rememberToken();
       $table->timestamps();
     });
+
+    DB::table('administradores')->insert(array(
+					'nombre' => 'Luis',
+          'apellido' => 'Aguilera',
+					'email' => 'teps@live.cl',
+					'password' => '1234'
+		));
   }
 
   /**
