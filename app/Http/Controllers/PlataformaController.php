@@ -15,7 +15,7 @@ use App\Configuracion;
 
 class PlataformaController extends Controller
 {
- 
+
   //Constructor, donde agrego excepcion del middleware de vista de login
   public function __construct()
   {
@@ -67,7 +67,10 @@ class PlataformaController extends Controller
   public function getPrincipal(Request $request)
   {
     $data['title'] = "Principal";
-    $data['total_horas'] = Hora::count();
+    $fecha = Date("Y-m-d");
+    //Obtengo la hora de hoy
+    $data['total_horas'] = Hora::where('fecha_hora','like','%'.$fecha.'%')
+    ->count();
     $data['total_pacientes'] = Paciente::count();
     $data['total_profesionales'] = Profesional::count();
     $data['total_especialidades'] = Especialidad::count();

@@ -10,7 +10,7 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="widget widget-default widget-item-icon" onclick="#">
         <div class="widget-item-left">
           <span class="fa fa-clock-o"></span>
@@ -18,13 +18,14 @@
         <div class="widget-data">
           <div class="widget-int num-count">{{ $total_horas }}</div>
           <div class="widget-title">Horas</div>
-          <div class="widget-subtitle">Pendientes y por confirmar</div>
+          <div class="widget-subtitle">Pendientes y por confirmar de hoy</div>
         </div>
         <div class="widget-controls">
           <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
         </div>
       </div>
     </div>
+    <!--
     <div class="col-md-3">
       <div class="widget widget-default widget-item-icon" onclick="#">
         <div class="widget-item-left">
@@ -40,7 +41,8 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+  -->
+    <div class="col-md-4">
       <div class="widget widget-default widget-carousel">
         <div class="owl-carousel" id="owl-example">
           <div>
@@ -61,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
 
       <!-- START WIDGET CLOCK -->
       <div class="widget widget-info widget-padding-sm">

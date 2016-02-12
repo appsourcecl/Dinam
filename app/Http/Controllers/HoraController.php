@@ -170,6 +170,7 @@ class HoraController extends Controller
     $hora->estado_hora_id = $request->estado_hora_id;
     $hora->comentario = $request->comentario;
     $hora->save();
+    $data['hora'] = $hora;
     $data['estado'] = true;
     return response::Json($data);
   }

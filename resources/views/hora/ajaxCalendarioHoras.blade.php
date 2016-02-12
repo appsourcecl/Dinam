@@ -142,7 +142,6 @@
                       Apellido *
                     </th>
                   </tr>
-
                   <tr>
                     <th>
                       <input id="paciente_rut" name="rut" class="form-control" placeholder="Rut" />
@@ -196,7 +195,6 @@
     </div>
   </div>
 </div>
-
 <!-- para ver detalle de hora y editarla. div parecido al de ingreso -->
 <div class="message-box animated fadeIn" data-sound="alert" id="message-box-hora-detalle">
   <div class="mb-container" style="top:0%;">
@@ -301,7 +299,6 @@
                       Apellido *
                     </th>
                   </tr>
-
                   <tr>
                     <th>
                       <input id="paciente_rut_detalle" name="rut" class="form-control" placeholder="Rut" />
@@ -355,8 +352,6 @@
     </div>
   </div>
 </div>
-
-
 <script>
 $( "#dia" ).datepicker();
 var horas_laborales =  [];
@@ -491,7 +486,15 @@ function ingresar_hora()
         console.log(data);
         if(data.estado == true)
         {
+          $("#message-box-hora").hide();
           $("#cargando_formulario_hora").html("");
+          var evento = {
+            id : data.hora.id,
+            title: 'Paciente: ' + $('#paciente_nombre').val(),
+            start: moment(data.hora.fecha_hora).format('YYYY-MM-DD hh:mm'),
+          }
+          console.log(evento);
+          $('#calendario').fullCalendar('addEvent',evento);
           swal('Hora ingresada', 'La hora ha sido ingresada correctamente !' , 'success');
         }
       },
