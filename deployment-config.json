@@ -5,5 +5,5 @@
   "port": 22,
   "remotePath": "/var/www/Dinam",
   "uploadOnSave": true,
-  "sshKeyFile": "/home/luis/Documentos/ssh/trade_nuevo.pem"
+  "sshKeyFile": "/home/luis/Documentos/ssh/trade_nuevo"
 }

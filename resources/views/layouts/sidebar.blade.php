@@ -34,11 +34,17 @@
                 <li><a href="{{ URL::to('especialidad/ver-especialidades') }}"><span class="fa fa-building-o"></span> Ver especialidades</a></li>
             </ul>
         </li>
+        <li class="xn-openable">
+            <a href="#"><span class="fa fa-building"></span> <span class="xn-text">Organización </span></a>
+            <ul>
+                <li><a href="{{ URL::to('mensaje/ver-mensajes') }}"><span class="fa fa-comments-o"></span> Mensajería</a></li>
+            </ul>
+        </li>
         <li>
           <br>
         </li>
         <li class="xn-openable">
-            <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">Administración </span></a>
+            <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">Configuración </span></a>
             <ul>
                 <li><a href="{{ URL::to('administrador/ver-administradores') }}"><span class="fa fa-eye"></span> Ver administradores</a></li>
                 <li><a href="{{ URL::to('plataforma/configuracion') }}"><span class="fa fa-cog"></span> Configuración general </a></li>

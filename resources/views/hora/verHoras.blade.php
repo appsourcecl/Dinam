@@ -38,7 +38,7 @@
                 <div class="col-md-9">
                   <div class="input-group">
                     <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                    <input type="text" class="form-control" placeholder="12345678-5" >
+                    <input type="text" name="paciente_rut" class="form-control" placeholder="12345678-5" >
                   </div>
                   <span class="help-block">Dejar en blanco si desea ver todas las horas</span>
                 </div>

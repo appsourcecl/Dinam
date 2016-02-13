@@ -68,14 +68,11 @@ class PlataformaController extends Controller
   {
     $data['title'] = "Principal";
     $fecha = Date("Y-m-d");
-    //Obtengo la hora de hoy
     $data['total_horas'] = Hora::where('fecha_hora','like','%'.$fecha.'%')
     ->count();
     $data['total_pacientes'] = Paciente::count();
     $data['total_profesionales'] = Profesional::count();
     $data['total_especialidades'] = Especialidad::count();
-
-
     return view('plataforma.principal',$data);
   }
 

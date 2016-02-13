@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use Response;
 use App\Profesional;
 use App\Hora;
@@ -61,6 +61,7 @@ class HoraController extends Controller
       'pacientes.nombre as paciente_nombre',
       'pacientes.apellido as paciente_apellido',
       'pacientes.rut as paciente_rut')
+      ->where('pacientes.rut','like','%'.$request->paciente_rut.'%')
       ->join('estado_hora','estado_hora.id','=', 'horas.estado_hora_id')
       ->join('pacientes','pacientes.id','=', 'horas.paciente_id')
       ->join('profesionales','profesionales.id','=','horas.profesional_id')

@@ -20,4 +20,5 @@ Route::group(['middleware' => ['web']], function () {
   Route::controller('administrador', 'AdministradorController');
   Route::controller('profesional', 'ProfesionalController');
   Route::controller('paciente', 'PacienteController');
+  Route::controller('mensaje', 'MensajeController');
 });
