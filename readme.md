@@ -5,4 +5,6 @@
 Software médico de código libre para consultorios y clínicas. Organiza la agenda médica, historia clínica y administración en centros de atención.
 
 Versión 1.0 
-   - Realiza agenda a profesionales
+   - Ingresa pacientes, profesionales y especialidades
+   - Realiza agenda de horas a profesionales
+   
