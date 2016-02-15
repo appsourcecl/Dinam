@@ -7,7 +7,8 @@
     <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
   </li>
   <!-- END SIGN OUT -->
-  <!-- MESSAGES -->
+  <!-- MESSAGES
+
   <li class="xn-icon-button pull-right">
     <a href="#"><span class="fa fa-comments"></span></a>
     <div class="informer informer-danger">4</div>
@@ -19,15 +20,14 @@
         </div>
       </div>
       <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
-      
+
       </div>
       <div class="panel-footer text-center">
         <a href="pages-messages.html">Show all messages</a>
       </div>
     </div>
   </li>
-  <!-- END MESSAGES -->
-  <!-- TASKS -->
+
   <li class="xn-icon-button pull-right">
     <a href="#"><span class="fa fa-tasks"></span></a>
     <div class="informer informer-warning">3</div>
@@ -72,6 +72,7 @@
         <a href="pages-tasks.html">Show all tasks</a>
       </div>
     </div>
+    -->
   </li>
   <!-- END TASKS -->
 </ul>
