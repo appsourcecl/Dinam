@@ -1,10 +1,7 @@
-## Sistema de reserva de horas realizado en laravel 5.2
+## Software de gestión para centros médicos
 
-Software Saas estará versionando cada día con mejoras y agregaciones
-Se obtendrá un prototipo funcional de cada módulo de manera semanal.
+[![Laravel](https://img.shields.io/badge/Powered%20by-Laravel-orange.svg?style=flat)](https://www.laravel.com/)
 
-**Semana 1** : Creación de login y estructura de la plantilla del sistema
+Software médico de código libre para consultorios y clínicas. Organiza la agenda médica, historia clínica y administración en centros de atención.
 
-**Semana 2** : Creación de mantenedores de todas las entidades del sistema
-
-**Semana 3** : Funcionalidad de registro y visualización de horas 
+Estado en desarrollo
