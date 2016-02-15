@@ -98,12 +98,7 @@ class AdministradorController extends Controller
     $administrador->email = $request->email;
     $administrador->password = $request->password;
     $administrador->save();
-
     $request->session()->flash('message', 'Administrador editado con éxito');
     return redirect('administrador/detalle-administrador?id='.$data['id']);
   }
-
-
-
-
 }
