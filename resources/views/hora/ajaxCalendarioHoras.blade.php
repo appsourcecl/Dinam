@@ -490,7 +490,8 @@ function ingresar_hora()
           $("#cargando_formulario_hora").html("");
           var evento = {
             id : data.hora.id,
-            title: 'Paciente: ' + $('#paciente_nombre').val() + '  \n  Profesional : ' + $('#profesional_id option:selected').text()  ,
+            title: 'Paciente: ' + $('#paciente_nombre').val() + '  \n  Profesional : ' + $('#profesional_id option:selected').text(),
+            //backgroundColor:  ,
             start: moment(data.hora.fecha_hora).format('YYYY-MM-DD hh:mm'),
           }
           console.log(evento);
