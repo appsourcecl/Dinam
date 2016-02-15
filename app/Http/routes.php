@@ -21,4 +21,5 @@ Route::group(['middleware' => ['web']], function () {
   Route::controller('profesional', 'ProfesionalController');
   Route::controller('paciente', 'PacienteController');
   Route::controller('mensaje', 'MensajeController');
+  Route::controller('sitio', 'SitioController');
 });

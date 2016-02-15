@@ -48,6 +48,7 @@
             <ul>
                 <li><a href="{{ URL::to('administrador/ver-administradores') }}"><span class="fa fa-eye"></span> Ver administradores</a></li>
                 <li><a href="{{ URL::to('plataforma/configuracion') }}"><span class="fa fa-cog"></span> Configuración general </a></li>
+                <li><a target="_blank" href="{{ URL::to('sitio/') }}"><span class="fa fa-file-image-o"></span> Visitar web </a></li>
             </ul>
         </li>
     </ul>
