@@ -87,7 +87,7 @@
                       <label class="col-md-3 control-label">Profesional</label>
                       <div class="col-md-9">
                         @if ($todos_profesionales)
-                        <select name="profesional_id" class="form-control">
+                        <select id="profesional_id" name="profesional_id" class="form-control">
                           @foreach ($profesionales as $profesional)
                           <option value="{{$profesional->id}}">{{ ucwords($profesional->nombre." ".$profesional->apellido) }}</option>
                           @endforeach
@@ -490,11 +490,12 @@ function ingresar_hora()
           $("#cargando_formulario_hora").html("");
           var evento = {
             id : data.hora.id,
-            title: 'Paciente: ' + $('#paciente_nombre').val(),
+            title: 'Paciente: ' + $('#paciente_nombre').val() + '  \n  Profesional : ' + $('#profesional_id option:selected').text(),
+            //backgroundColor:  ,
             start: moment(data.hora.fecha_hora).format('YYYY-MM-DD hh:mm'),
           }
           console.log(evento);
-          $('#calendario').fullCalendar('addEvent',evento);
+          $('#calendario').fullCalendar('renderEvent',evento);
           swal('Hora ingresada', 'La hora ha sido ingresada correctamente !' , 'success');
         }
       },
