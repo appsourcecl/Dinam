@@ -97,6 +97,13 @@ class PlataformaController extends Controller
       $configuracion = new Configuracion;
     }
     $configuracion->nombre = $request->nombre;
+    $configuracion->direccion = $request->direccion;
+    $configuracion->comuna = $request->comuna;
+    $configuracion->ciudad = $request->ciudad;
+    $configuracion->pais = $request->pais;
+    $configuracion->email = $request->email;
+    $configuracion->telefono = $request->telefono;
+    $configuracion->telefono_secundario = $request->telefono_secundario;
     $configuracion->save();
 
     if( $request->hasFile('logo') ) {

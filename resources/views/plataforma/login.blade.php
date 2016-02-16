@@ -31,7 +31,10 @@
         </ul>
       </div>
       @endif
-
+      <center>
+        <img style="width:200px" src="{{ URL::to('sitio/logo.png') }}">
+      </center>
+      <br>
       <div class="login-body">
         <div class="login-title"><strong>Bienvenido</strong>, inicio de sesión</div>
         <form action="logear" class="form-horizontal" method="post">

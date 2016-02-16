@@ -43,16 +43,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <nav class="navbar navbar-inverse" role="navigation">
         <div class="navbar-header">
           <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a href="#" class="navbar-brand scroll-top logo  animated bounceInLeft"><b><i></i>{{ $title }}</b></a> </div>
+          <a href="#" class="navbar-brand scroll-top logo  animated bounceInLeft" style="padding:10px;margin:20px;"><img style="width:160px" src="sitio/logo.png"></a> </div>
           <!--/.navbar-header-->
           <div id="main-nav" class="collapse navbar-collapse">
             <ul class="nav navbar-nav" id="mainNav">
               <li class="active" id="firstLink"><a href="#home" class="scroll-link">Inicio</a></li>
               <li><a href="#services" class="scroll-link">Servicios</a></li>
               <li><a href="#aboutUs" class="scroll-link">Nosotros</a></li>
-              <li><a href="#work" class="scroll-link">Reservar hora</a></li>
               <li><a href="#team" class="scroll-link">Equipo</a></li>
               <li><a href="#contactUs" class="scroll-link">Contáctenos</a></li>
+              <li><a href="{{ URL::asset('sitio/reservar-hora') }}" class="scroll-link">Reservar hora</a></li>
             </ul>
           </div>
           <!--/.navbar-collapse-->
@@ -125,7 +125,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
         <div class="row feature design">
           <div class="six columns right">
-            <h3>Clean and Modern Design.</h3>
             <p>
               {{ $configuracion->texto_nosotros_informacion }}
             </p>
@@ -277,13 +276,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="col-sm-4">
                               <h4>Dirección:</h4>
                               <address>
-                                WebThemez Company<br>
-                                134 Stilla. Tae., 414515<br>
-                                Leorislon, SA 02434-34534 USA <br>
+                                {{ $configuracion->direccion }}, {{ $configuracion->comuna }}<br>
+                                {{ $configuracion->ciudad }}, {{ $configuracion->pais }}<br>
                               </address>
                               <h4>Teléfono:</h4>
                               <address>
-                                12345-49589-2<br>
+                                {{ $configuracion->telefono }}<br>
+                                {{ $configuracion->telefono_secundario }}
+                              </address>
+                              <h4>E-mail:</h4>
+                              <address>
+                                {{ $configuracion->email }}<br>
                               </address>
                             </div>
                           </div>

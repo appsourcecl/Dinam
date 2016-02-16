@@ -16,7 +16,10 @@ class Configuracion extends Migration
       $table->increments('id');
       $table->string('nombre')->nullable();
       $table->string('descripcion')->nullable();
-      $table->string('url_logo')->nullable();
+      $table->string('direccion')->nullable();
+      $table->string('comuna')->nullable();
+      $table->string('ciudad')->nullable();
+      $table->string('pais')->nullable();
       $table->string('email')->nullable();
       $table->string('telefono')->nullable();
       $table->string('telefono_secundario')->nullable();
