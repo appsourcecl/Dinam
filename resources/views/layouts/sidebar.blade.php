@@ -37,7 +37,8 @@
         <li class="xn-openable">
             <a href="#"><span class="fa fa-building"></span> <span class="xn-text">Organización </span></a>
             <ul>
-                <li><a href="{{ URL::to('mensaje/ver-mensajes') }}"><span class="fa fa-comments-o"></span> Mensajería</a></li>
+                <li><a href="{{ URL::to('mensaje/ver-mensajes') }}"><span class="fa fa-comments-o"></span> Mensajería interna</a></li>
+                <li><a href="{{ URL::to('mensaje/ver-mensajes') }}"><span class="fa fa-comment-o"></span> Mensajería clientes</a></li>
             </ul>
         </li>
         <li>
@@ -47,8 +48,8 @@
             <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">Configuración </span></a>
             <ul>
                 <li><a href="{{ URL::to('administrador/ver-administradores') }}"><span class="fa fa-eye"></span> Ver administradores</a></li>
-                <li><a href="{{ URL::to('plataforma/configuracion') }}"><span class="fa fa-cog"></span> Configuración general </a></li>
-                <li><a target="_blank" href="{{ URL::to('sitio/') }}"><span class="fa fa-file-image-o"></span> Visitar web </a></li>
+                <li><a href="{{ URL::to('plataforma/configuracion') }}"><span class="fa fa-cog"></span> Configuración web </a></li>
+                <li><a target="_blank" href="{{ URL::to('/') }}"><span class="fa fa-file-image-o"></span> Visitar web </a></li>
             </ul>
         </li>
     </ul>

@@ -1,6 +1,7 @@
 # Software de gestión para centros médicos
 
 [![Laravel](https://img.shields.io/badge/Powered%20by-Laravel-orange.svg?style=flat)](https://www.laravel.com/)
+[![Mit](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](http://opensource.org/licenses/MIT/)
 
 Software médico de código libre para consultorios y clínicas. Organiza la agenda médica, historia clínica y administración en centros de atención.
 

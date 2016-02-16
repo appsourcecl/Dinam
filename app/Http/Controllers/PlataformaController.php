@@ -97,8 +97,77 @@ class PlataformaController extends Controller
       $configuracion = new Configuracion;
     }
     $configuracion->nombre = $request->nombre;
+    $configuracion->direccion = $request->direccion;
+    $configuracion->comuna = $request->comuna;
+    $configuracion->ciudad = $request->ciudad;
+    $configuracion->pais = $request->pais;
+    $configuracion->email = $request->email;
+    $configuracion->telefono = $request->telefono;
+    $configuracion->telefono_secundario = $request->telefono_secundario;
     $configuracion->save();
+
+    if( $request->hasFile('logo') ) {
+      $request->file('logo')->move("sitio", "logo.png");
+    }
+
+
     $request->session()->flash('message', 'Configuración editada con éxito');
     return redirect('plataforma/configuracion');
   }
+
+  public function postEditarConfiguracionWeb(Request $request)
+  {
+    $configuracion = Configuracion::first();
+    $configuracion->descripcion = $request->descripcion;
+    $configuracion->texto_servicio = $request->texto_servicio;
+    $configuracion->texto_nosotros = $request->texto_nosotros;
+    $configuracion->texto_nosotros_informacion = $request->texto_nosotros_informacion;
+    $configuracion->texto_infraestructura = $request->texto_infraestructura;
+    $configuracion->texto_equipo = $request->texto_equipo;
+    $configuracion->texto_contacto = $request->texto_contacto;
+    $configuracion->update();
+    $request->session()->flash('message_web', 'Configuración editada con éxito');
+    return redirect('plataforma/configuracion');
+  }
+
+  public function postEditarConfiguracionWebDoctor(Request $request)
+  {
+    //Imagen del banner
+    if( $request->hasFile('banner-bg') ) {
+      $request->file('banner-bg')->move("plantillas/template_doctor/images/", "banner-bg.jpg");
+    }
+    //Imagen para la "nosotros"
+    if( $request->hasFile('feature-img-1') ) {
+      $request->file('feature-img-1')->move("plantillas/template_doctor/images/work", "feature-img-1.png");
+    }
+    //Imágenes para las instalaciones
+    if( $request->hasFile('instalacion_1') ) {
+      $request->file('instalacion_1')->move("plantillas/template_doctor/images/work", "1.jpg");
+    }
+    if( $request->hasFile('instalacion_2') ) {
+      $request->file('instalacion_2')->move("plantillas/template_doctor/images/work", "2.jpg");
+    }
+    if( $request->hasFile('instalacion_3') ) {
+      $request->file('instalacion_3')->move("plantillas/template_doctor/images/work", "3.jpg");
+    }
+    if( $request->hasFile('instalacion_4') ) {
+      $request->file('instalacion_4')->move("plantillas/template_doctor/images/work", "4.jpg");
+    }
+    if( $request->hasFile('instalacion_5') ) {
+      $request->file('instalacion_5')->move("plantillas/template_doctor/images/work", "5.jpg");
+    }
+    if( $request->hasFile('instalacion_6') ) {
+      $request->file('instalacion_6')->move("plantillas/template_doctor/images/work", "6.jpg");
+    }
+    if( $request->hasFile('instalacion_7') ) {
+      $request->file('instalacion_7')->move("plantillas/template_doctor/images/work", "7.jpg");
+    }
+    if( $request->hasFile('instalacion_8') ) {
+      $request->file('instalacion_8')->move("plantillas/template_doctor/images/work", "8.jpg");
+    }
+
+    $request->session()->flash('message_web_doctor', 'Configuración editada con éxito');
+    return redirect('plataforma/configuracion');
+  }
+
 }
