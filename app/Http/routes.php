@@ -11,9 +11,7 @@
 |
 */
 Route::group(['middleware' => ['web']], function () {
-  Route::get('/', function () {
-      return view('welcome');
-  });
+  Route::get('/', 'SitioController@getIndex');
   Route::controller('plataforma', 'PlataformaController');
   Route::controller('hora', 'HoraController');
   Route::controller('especialidad', 'EspecialidadController');

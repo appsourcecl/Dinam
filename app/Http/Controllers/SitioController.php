@@ -16,3 +16,5 @@ class SitioController extends Controller
       return view('sitio.index',$data);
     }
 }
+
+?>
