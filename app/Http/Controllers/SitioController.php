@@ -13,8 +13,6 @@ class SitioController extends Controller
     {
       $data['configuracion'] = Configuracion::first();
       $data['title'] = $data['configuracion']->nombre;
-      $data['texto_servicio'] = $data['configuracion']->texto_servicio;
-      $data['texto_nosotros'] = $data['configuracion']->texto_nosotros;
       return view('sitio.index',$data);
     }
 }

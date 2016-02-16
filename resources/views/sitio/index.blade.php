@@ -67,7 +67,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <div class="banner-container"> <img src="{{ URL::asset('plantillas/template_doctor/images/banner-bg.jpg') }}" alt="banner" />
         <div class="container banner-content">
           <div class="hero-text animated fadeInDownBig">
-            <h1 class="responsive-headline" style="font-size: 40px;">Somos número uno en atención médica</h1>
+            <h1 class="responsive-headline" style="font-size: 40px;">{{ $configuracion->descripcion }}</h1>
             <a href="#basics" class="arrow-link"> <i class="fa fa-arrow-circle-down fa-2x"></i> </a>
             <!--<p>Awesome theme for your Business or Corporate site to showcase <br/>
             your product and service.</p>-->
@@ -80,7 +80,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="heading text-center">
           <!-- Heading -->
           <h2>Nuestros servicios</h2>
-          <p>{{ $texto_servicio }}</p>
+          <p>{{ $configuracion->texto_servicio }}</p>
         </div>
         <div class="row">
           <!-- item -->
@@ -120,82 +120,97 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <!-- Heading -->
           <h2>Nosotros</h2>
           <p>
-            {{ $texto_nosotros }}
+            {{ $configuracion->texto_nosotros }}
           </p>
         </div>
         <div class="row feature design">
           <div class="six columns right">
             <h3>Clean and Modern Design.</h3>
-            <p>Lorem ipsum dolor sit amet, ea eum labitur scsstie percipitoleat fabulas complectitur deterruisset at pro. Odio quaeque reformidans est eu, expetendis intellegebat has ut, viderer invenire ut his. Has molestie percipit an. Falli volumus efficiantur sed id, ad vel noster propriae. Ius ut etiam vivendo, graeci iudicabit constituto at mea. No soleat fabulas prodesset vel, ut quo solum dicunt.
-              Nec et jority have suffered alteration. </p>
-              <p>Odio quaeque reformidans est eu, expetendis intellegebat has ut, viderer invenire ut his. Has molestie percipit an. Falli volumus efficiantur sed id, ad vel noster propriae. Ius ut etiam vivendo, graeci iudicabit constituto at mea. No soleat fabulas prodesset vel, ut quo solum dicunt.
-                Nec et amet vidisse mentitumsstie percipitoleat fabulas. </p>
-              </div>
-              <div class="six columns feature-media left"> <img src="{{ URL::asset('plantillas/template_doctor/images/feature-img-1.png') }}" alt=""> </div>
+            <p>
+              {{ $configuracion->texto_nosotros_informacion }}
+            </p>
+          </div>
+          <div class="six columns feature-media left"> <img src="{{ URL::asset('plantillas/template_doctor/images/feature-img-1.png') }}" alt=""> </div>
+        </div>
+      </div>
+    </section>
+    <section id="work" class="page-section page">
+      <div class="container text-center">
+        <div class="heading">
+          <h2>Nuestras instalaciones</h2>
+          <p>
+            {{ $configuracion->infraestructura }}
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="portfolio">
+              <ul class="items list-unstyled clearfix animated fadeInRight showing" data-animation="fadeInRight" style="position: relative; height: 438px;">
+                <li class="item branding" style="position: absolute; left: 0px; top: 0px;"> <a href="images/work/1.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/1.jpg') }}" alt="">
+                  <div class="overlay"> <span>Etiam porta</span> </div>
+                </a> </li>
+                <li class="item photography" style="position: absolute; left: 292px; top: 0px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/2.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/2.jpg') }}" alt="">
+                  <div class="overlay"> <span>Lorem ipsum</span> </div>
+                </a> </li>
+                <li class="item branding" style="position: absolute; left: 585px; top: 0px;"> <a href="images/work/3.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/3.jpg') }}" alt="">
+                  <div class="overlay"> <span>Vivamus quis</span> </div>
+                </a> </li>
+                <li class="item photography" style="position: absolute; left: 877px; top: 0px;"> <a href="images/work/4.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/4.jpg') }}" alt="">
+                  <div class="overlay"> <span>Donec ac tellus</span> </div>
+                </a> </li>
+                <li class="item photography" style="position: absolute; left: 0px; top: 219px;"> <a href="images/work/5.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/5.jpg') }}" alt="">
+                  <div class="overlay"> <span>Etiam volutpat</span> </div>
+                </a> </li>
+                <li class="item web" style="position: absolute; left: 292px; top: 219px;"> <a href="images/work/6.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/6.jpg') }}" alt="">
+                  <div class="overlay"> <span>Donec congue </span> </div>
+                </a> </li>
+                <li class="item photography" style="position: absolute; left: 585px; top: 219px;"> <a href="images/work/7.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/7.jpg') }}" alt="">
+                  <div class="overlay"> <span>Nullam a ullamcorper diam</span> </div>
+                </a> </li>
+                <li class="item web" style="position: absolute; left: 877px; top: 219px;"> <a href="images/work/8.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/8.jpg') }}" alt="">
+                  <div class="overlay"> <span>Etiam consequat</span> </div>
+                </a> </li>
+              </ul>
             </div>
           </div>
-        </section>
-        <section id="work" class="page-section page">
-          <div class="container text-center">
-            <div class="heading">
-              <h2>Nuestras instalaciones</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, alias enim placeat earum quos ab.</p>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div id="portfolio">
-                  <ul class="items list-unstyled clearfix animated fadeInRight showing" data-animation="fadeInRight" style="position: relative; height: 438px;">
-                    <li class="item branding" style="position: absolute; left: 0px; top: 0px;"> <a href="images/work/1.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/1.jpg') }}" alt="">
-                      <div class="overlay"> <span>Etiam porta</span> </div>
-                    </a> </li>
-                    <li class="item photography" style="position: absolute; left: 292px; top: 0px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/2.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/2.jpg') }}" alt="">
-                      <div class="overlay"> <span>Lorem ipsum</span> </div>
-                    </a> </li>
-                    <li class="item branding" style="position: absolute; left: 585px; top: 0px;"> <a href="images/work/3.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/3.jpg') }}" alt="">
-                      <div class="overlay"> <span>Vivamus quis</span> </div>
-                    </a> </li>
-                    <li class="item photography" style="position: absolute; left: 877px; top: 0px;"> <a href="images/work/4.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/4.jpg') }}" alt="">
-                      <div class="overlay"> <span>Donec ac tellus</span> </div>
-                    </a> </li>
-                    <li class="item photography" style="position: absolute; left: 0px; top: 219px;"> <a href="images/work/5.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/5.jpg') }}" alt="">
-                      <div class="overlay"> <span>Etiam volutpat</span> </div>
-                    </a> </li>
-                    <li class="item web" style="position: absolute; left: 292px; top: 219px;"> <a href="images/work/6.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/6.jpg') }}" alt="">
-                      <div class="overlay"> <span>Donec congue </span> </div>
-                    </a> </li>
-                    <li class="item photography" style="position: absolute; left: 585px; top: 219px;"> <a href="images/work/7.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/7.jpg') }}" alt="">
-                      <div class="overlay"> <span>Nullam a ullamcorper diam</span> </div>
-                    </a> </li>
-                    <li class="item web" style="position: absolute; left: 877px; top: 219px;"> <a href="images/work/8.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/8.jpg') }}" alt="">
-                      <div class="overlay"> <span>Etiam consequat</span> </div>
-                    </a> </li>
-                  </ul>
+        </div>
+      </div>
+    </section>
+    <section id="team" class="page-section">
+      <div class="container">
+        <div class="heading text-center">
+          <!-- Heading -->
+          <h2>Nuestro equipo</h2>
+          <p>
+            {{ $configuracion->texto_equipo }}
+          </p>
+        </div>
+        <!-- Team Member's Details -->
+        <div class="team-content">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-6">
+              <!-- Team Member -->
+              <div class="team-member pDark">
+                <!-- Image Hover Block -->
+                <div class="member-img">
+                  <!-- Image  -->
+                  <img class="img-responsive" src="{{ URL::asset('plantillas/template_doctor/images/photo-1.jpg') }}" alt=""> </div>
+                  <!-- Member Details -->
+                  <h4>John Doe</h4>
+                  <!-- Designation -->
+                  <span class="pos">CEO</span> </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="team" class="page-section">
-          <div class="container">
-            <div class="heading text-center">
-              <!-- Heading -->
-              <h2>Our Team</h2>
-              <p>At variations of passages of Lorem Ipsum available, but the majority have suffered alteration..</p>
-            </div>
-            <!-- Team Member's Details -->
-            <div class="team-content">
-              <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-6">
                   <!-- Team Member -->
                   <div class="team-member pDark">
                     <!-- Image Hover Block -->
                     <div class="member-img">
                       <!-- Image  -->
-                      <img class="img-responsive" src="{{ URL::asset('plantillas/template_doctor/images/photo-1.jpg') }}" alt=""> </div>
+                      <img class="img-responsive" src="{{ URL::asset('plantillas/template_doctor/images/photo-2.jpg') }}" alt=""> </div>
                       <!-- Member Details -->
-                      <h4>John Doe</h4>
+                      <h4>Larry Doe</h4>
                       <!-- Designation -->
-                      <span class="pos">CEO</span> </div>
+                      <span class="pos">Art Director</span> </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-6">
                       <!-- Team Member -->
@@ -203,11 +218,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <!-- Image Hover Block -->
                         <div class="member-img">
                           <!-- Image  -->
-                          <img class="img-responsive" src="{{ URL::asset('plantillas/template_doctor/images/photo-2.jpg') }}" alt=""> </div>
+                          <img class="img-responsive" src="{{ URL::asset('plantillas/template_doctor/images/photo-3.jpg') }}" alt=""> </div>
                           <!-- Member Details -->
-                          <h4>Larry Doe</h4>
+                          <h4>Ranith Kays</h4>
                           <!-- Designation -->
-                          <span class="pos">Art Director</span> </div>
+                          <span class="pos">Manager</span> </div>
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-6">
                           <!-- Team Member -->
@@ -215,106 +230,96 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <!-- Image Hover Block -->
                             <div class="member-img">
                               <!-- Image  -->
-                              <img class="img-responsive" src="{{ URL::asset('plantillas/template_doctor/images/photo-3.jpg') }}" alt=""> </div>
+                              <img class="img-responsive" src="{{ URL::asset('plantillas/template_doctor/images/photo-4.jpg') }}" alt=""> </div>
                               <!-- Member Details -->
-                              <h4>Ranith Kays</h4>
+                              <h4>Joan Ray</h4>
                               <!-- Designation -->
-                              <span class="pos">Manager</span> </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-6">
-                              <!-- Team Member -->
-                              <div class="team-member pDark">
-                                <!-- Image Hover Block -->
-                                <div class="member-img">
-                                  <!-- Image  -->
-                                  <img class="img-responsive" src="{{ URL::asset('plantillas/template_doctor/images/photo-4.jpg') }}" alt=""> </div>
-                                  <!-- Member Details -->
-                                  <h4>Joan Ray</h4>
-                                  <!-- Designation -->
-                                  <span class="pos">Creative</span> </div>
-                                </div>
-                              </div>
+                              <span class="pos">Creative</span> </div>
                             </div>
                           </div>
-                          <!--/.container-->
-                        </section>
-                        <section id="contactUs" class="contact-parlex">
-                          <div class="parlex-back">
-                            <div class="container">
-                              <div class="row">
-                                <div class="heading text-center">
-                                  <!-- Heading -->
-                                  <h2>Contáctenos</h2>
-                                  <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
+                        </div>
+                      </div>
+                      <!--/.container-->
+                    </section>
+                    <section id="contactUs" class="contact-parlex">
+                      <div class="parlex-back">
+                        <div class="container">
+                          <div class="row">
+                            <div class="heading text-center">
+                              <!-- Heading -->
+                              <h2>Contáctenos</h2>
+                              <p>
+                                  {{ $configuracion->texto_contacto }}
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row mrgn30">
+                            <form method="post" action="" id="contactfrm" role="form">
+                              <div class="col-sm-4">
+                                <div class="form-group">
+                                  <label for="name">Nombre</label>
+                                  <input type="text" class="form-control" name="name" id="name" placeholder="Ingrese su nombre" title="Please enter your name (at least 2 characters)">
+                                </div>
+                                <div class="form-group">
+                                  <label for="email">Email</label>
+                                  <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese su e-mail" title="Please enter a valid email address">
+                                  <button name="submit" type="submit" class="btn btn-lg btn-primary" id="submit">Enviar mensaje</button>
                                 </div>
                               </div>
-                              <div class="row mrgn30">
-                                <form method="post" action="" id="contactfrm" role="form">
-                                  <div class="col-sm-4">
-                                    <div class="form-group">
-                                      <label for="name">Nombre</label>
-                                      <input type="text" class="form-control" name="name" id="name" placeholder="Ingrese su nombre" title="Please enter your name (at least 2 characters)">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="email">Email</label>
-                                      <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese su e-mail" title="Please enter a valid email address">
-                                      <button name="submit" type="submit" class="btn btn-lg btn-primary" id="submit">Enviar mensaje</button>
-                                    </div>
-                                  </div>
-                                  <div class="col-sm-4">
-                                    <div class="form-group">
-                                      <label for="comments">Comentarios</label>
-                                      <textarea name="comment" class="form-control" id="comments" cols="3" rows="5" placeholder="Ingrese su mensaje…" title="Please enter your message (at least 10 characters)"></textarea>
-                                    </div>
-                                    <div class="result"></div>
-                                  </div>
-                                </form>
-                                <div class="col-sm-4">
-                                  <h4>Dirección:</h4>
-                                  <address>
-                                    WebThemez Company<br>
-                                    134 Stilla. Tae., 414515<br>
-                                    Leorislon, SA 02434-34534 USA <br>
-                                  </address>
-                                  <h4>Teléfono:</h4>
-                                  <address>
-                                    12345-49589-2<br>
-                                  </address>
+                              <div class="col-sm-4">
+                                <div class="form-group">
+                                  <label for="comments">Comentarios</label>
+                                  <textarea name="comment" class="form-control" id="comments" cols="3" rows="5" placeholder="Ingrese su mensaje…" title="Please enter your message (at least 10 characters)"></textarea>
                                 </div>
+                                <div class="result"></div>
                               </div>
+                            </form>
+                            <div class="col-sm-4">
+                              <h4>Dirección:</h4>
+                              <address>
+                                WebThemez Company<br>
+                                134 Stilla. Tae., 414515<br>
+                                Leorislon, SA 02434-34534 USA <br>
+                              </address>
+                              <h4>Teléfono:</h4>
+                              <address>
+                                12345-49589-2<br>
+                              </address>
                             </div>
-                            <div class="container">
-                              <div class="social text-center">
-                                <a href="#">
-                                  <i class="fa fa-facebook"></i>
-                                </a>
-                              </div>
-                              <!--CLEAR FLOATS-->
-                            </div>
-                            <!--/.container-->
                           </div>
-                        </section>
-                        <!--/.page-section-->
-                        <section class="copyright">
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-sm-12 text-center"> Copyright 2014 | All Rights Reserved -- Template by <a href="http://webThemez.com">WebThemez.com</a> </div>
-                            </div>
-                            <!-- / .row -->
+                        </div>
+                        <div class="container">
+                          <div class="social text-center">
+                            <a href="#">
+                              <i class="fa fa-facebook"></i>
+                            </a>
                           </div>
-                        </section>
-                        <a href="#top" class="topHome"><i class="fa fa-chevron-up fa-2x"></i></a>
+                          <!--CLEAR FLOATS-->
+                        </div>
+                        <!--/.container-->
+                      </div>
+                    </section>
+                    <!--/.page-section-->
+                    <section class="copyright">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-12 text-center"> Copyright 2016 | Todos los derechos reservados </div>
+                        </div>
+                        <!-- / .row -->
+                      </div>
+                    </section>
+                    <a href="#top" class="topHome"><i class="fa fa-chevron-up fa-2x"></i></a>
 
-                        <!--[if lte IE 8]><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><![endif]-->
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/modernizr-latest.js') }}"></script>
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/bootstrap.min.js') }}" type="text/javascript"></script>
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/jquery.isotope.min.js') }}" type="text/javascript"></script>
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/fancybox/jquery.fancybox.pack.js') }}" type="text/javascript"></script>
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/jquery.nav.js') }}" type="text/javascript"></script>
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/jquery.fittext.js') }}"></script>
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/waypoints.js') }}"></script>
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/custom.js') }}" type="text/javascript"></script>
-                        <script src="{{ URL::asset('plantillas/template_doctor/js/owl-carousel/owl.carousel.js') }}"></script>
-                      </body>
-                      </html>
+                    <!--[if lte IE 8]><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><![endif]-->
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/modernizr-latest.js') }}"></script>
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/bootstrap.min.js') }}" type="text/javascript"></script>
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/jquery.isotope.min.js') }}" type="text/javascript"></script>
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/fancybox/jquery.fancybox.pack.js') }}" type="text/javascript"></script>
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/jquery.nav.js') }}" type="text/javascript"></script>
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/jquery.fittext.js') }}"></script>
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/waypoints.js') }}"></script>
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/custom.js') }}" type="text/javascript"></script>
+                    <script src="{{ URL::asset('plantillas/template_doctor/js/owl-carousel/owl.carousel.js') }}"></script>
+                  </body>
+                  </html>

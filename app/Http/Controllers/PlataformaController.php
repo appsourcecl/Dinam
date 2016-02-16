@@ -101,4 +101,19 @@ class PlataformaController extends Controller
     $request->session()->flash('message', 'Configuración editada con éxito');
     return redirect('plataforma/configuracion');
   }
+
+  public function postEditarConfiguracionWeb(Request $request)
+  {
+    $configuracion = Configuracion::first();
+    $configuracion->descripcion = $request->descripcion;
+    $configuracion->texto_servicio = $request->texto_servicio;
+    $configuracion->texto_nosotros = $request->texto_nosotros;
+    $configuracion->texto_nosotros_informacion = $request->texto_nosotros_informacion;
+    $configuracion->texto_infraestructura = $request->texto_infraestructura;
+    $configuracion->texto_equipo = $request->texto_equipo;
+    $configuracion->update();
+    $request->session()->flash('message_web', 'Configuración editada con éxito');
+    return redirect('plataforma/configuracion');
+  }
+
 }
