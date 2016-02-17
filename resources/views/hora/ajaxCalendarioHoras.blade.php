@@ -371,16 +371,14 @@ var horas_ingresadas = [
   @foreach ($horas as $hora)
   {
     id : '{{ $hora->id }}',
-    title: 'Paciente: {{ $hora->paciente_nombre." ".$hora->paciente_apellido }} \n  Profesional : {{ $hora->profesional_nombre." ".$hora->profesional_apellido }} ',
-    start: moment('{{ $hora->fecha_hora }}').format('YYYY-MM-DD hh:mm'),
+    title: 'Paciente: {{ $hora->paciente_nombre." ".$hora->paciente_apellido }} ',
+    start: moment('{{ $hora->fecha_hora }}').format('YYYY-MM-DD HH:mm'),
+    end : moment('{{ $hora->fecha_hora }}').add(15, 'm').format('YYYY-MM-DD HH:mm'),
     backgroundColor: '{{ $hora->color }}',
   },
   @endforeach
 ];
-
 total_eventos = horas_laborales.concat(horas_ingresadas);
-console.log(total_eventos);
-
 $('#calendario').fullCalendar({
   defaultView: 'agendaWeek',
   allDaySlot: false,
@@ -389,11 +387,15 @@ $('#calendario').fullCalendar({
     center: 'title',
     right: 'month,agendaWeek,agendaDay'
   },
+  minTime: "05:30:00",
+  slotDuration: "00:15:00",
   events:  total_eventos,
+  axisFormat: 'H:mm',
   dayClick: function(date, jsEvent, view) {
-    $("#hora_seleccionada").html(date.format("DD-MM-YYYY, h:mm:ss"));
+    $("#hora_seleccionada").html(date.format("DD-MM-YYYY, HH:mm:ss"));
+    console.log(date.format("DD-MM-YYYY, HH:mm:ss"));
     $("#dia").val(date.format("DD-MM-YYYY"));
-    $("#hora").val(date.format("h:mm:ss"));
+    $("#hora").val(date.format("HH:mm:ss"));
     $("#message-box-hora").show();
   },
   eventClick: function(calEvent, jsEvent, view) {
@@ -490,11 +492,10 @@ function ingresar_hora()
           $("#cargando_formulario_hora").html("");
           var evento = {
             id : data.hora.id,
-            title: 'Paciente: ' + $('#paciente_nombre').val() + '  \n  Profesional : ' + $('#profesional_id option:selected').text(),
-            //backgroundColor:  ,
-            start: moment(data.hora.fecha_hora).format('YYYY-MM-DD hh:mm'),
+            title: 'Paciente: ' + $('#paciente_nombre').val() ,
+            start: moment(data.hora.fecha_hora).format('YYYY-MM-DD HH:mm'),
+            end: moment(data.hora.fecha_hora).add(15, 'm').format('YYYY-MM-DD HH:mm'),
           }
-          console.log(evento);
           $('#calendario').fullCalendar('renderEvent',evento);
           swal('Hora ingresada', 'La hora ha sido ingresada correctamente !' , 'success');
         }
