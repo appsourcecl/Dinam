@@ -20,6 +20,8 @@ Software médico de código libre para consultorios y clínicas. Organiza la age
 ### Versión 1.0 
    - Ingresa pacientes, profesionales y especialidades
    - Realiza agenda de horas a profesionales
+   - Genera un sitio web a través de información de configuración
+   - Ingresa información clínica a cada paciente y genera un historial
 
 ### Licencia 
 

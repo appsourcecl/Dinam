@@ -74,13 +74,13 @@
         </div>
         <div class="widget-buttons widget-c3">
           <div class="col">
-            <a href="#"><span class="fa fa-clock-o"></span></a>
+            <a href="{{ URL::to('hora/ver-horas') }}"><span class="fa fa-clock-o"></span></a>
           </div>
           <div class="col">
-            <a href="#"><span class="fa fa-bell"></span></a>
+            <a href="{{ URL::to('mensaje/ver-mensajes') }}"><span class="fa fa-comment"></span></a>
           </div>
           <div class="col">
-            <a href="#"><span class="fa fa-calendar"></span></a>
+            <a href="{{ URL::to('paciente/ver-pacientes') }}"><span class="fa fa-user"></span></a>
           </div>
         </div>
       </div>

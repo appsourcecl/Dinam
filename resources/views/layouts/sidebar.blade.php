@@ -25,17 +25,17 @@
             <a href="{{ URL::to('hora/ver-horas') }}"><span class="fa fa-calendar"></span> <span class="xn-text">Horas</span></a>
         </li>
         <li>
-            <a href="{{ URL::to('paciente/ver-pacientes') }}"><span class="fa fa-user"></span> <span class="xn-text">Pacientes</span></a>
+            <a href="{{ URL::to('paciente/ver-pacientes') }}"><span class="fa fa-users"></span> <span class="xn-text">Pacientes</span></a>
         </li>
         <li class="xn-openable">
-            <a href="#"><span class="fa fa-group"></span> <span class="xn-text">Profesionales</span></a>
+            <a href="#"><span class="fa fa-user-md"></span> <span class="xn-text">Profesionales</span></a>
             <ul>
                 <li><a href="{{ URL::to('profesional/ver-profesionales') }}"><span class="fa fa-eye"></span> Ver profesionales</a></li>
-                <li><a href="{{ URL::to('especialidad/ver-especialidades') }}"><span class="fa fa-building-o"></span> Ver especialidades</a></li>
+                <li><a href="{{ URL::to('especialidad/ver-especialidades') }}"><span class="fa fa fa-stethoscope"></span> Ver especialidades</a></li>
             </ul>
         </li>
         <li class="xn-openable">
-            <a href="#"><span class="fa fa-building"></span> <span class="xn-text">Organización </span></a>
+            <a href="#"><span class="fa fa-hospital-o"></span> <span class="xn-text">Organización </span></a>
             <ul>
                 <li><a href="{{ URL::to('mensaje/ver-mensajes') }}"><span class="fa fa-comments-o"></span> Mensajería interna</a></li>
                 <li><a href="{{ URL::to('mensaje/ver-mensajes') }}"><span class="fa fa-comment-o"></span> Mensajería clientes</a></li>
