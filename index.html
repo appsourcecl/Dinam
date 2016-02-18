@@ -40,9 +40,39 @@
 <p>El desarrollo está basado en PHP y MySQl utilizando el framework Laravel 5.2.</p>
 
 <h3>
+<a id="requisitos-del-servidor" class="anchor" href="#requisitos-del-servidor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requisitos del servidor</h3>
+
+<ul>
+<li>PHP &gt;= 5.5.9</li>
+<li>MySql </li>
+<li>Nginx o Apache Server</li>
+<li>Composer </li>
+</ul>
+
+<h3>
+<a id="instalación" class="anchor" href="#instalaci%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instalación</h3>
+
+<ul>
+<li>Descargar el proyecto y crear un virtualhost en apache o una nueva configuración de servidor en nginx</li>
+<li>Descargar las librerías necesarias  ejecutando "composer install" desde la raíz del proyecto</li>
+<li>Configurar el archivo .env para la conexión de la base de datos (debe crear una base de datos en MySql)</li>
+<li>Ejecutar el comando "php artisan migrate", para generar las entidades de la base de datos de manera automática</li>
+</ul>
+
+<h3>
+<a id="versión-10" class="anchor" href="#versi%C3%B3n-10" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Versión 1.0</h3>
+
+<ul>
+<li>Ingresa pacientes, profesionales y especialidades</li>
+<li>Realiza agenda de horas a profesionales</li>
+<li>Genera un sitio web a través de información de configuración</li>
+<li>Ingresa información clínica a cada paciente y genera un historial</li>
+</ul>
+
+<h3>
 <a id="licencia" class="anchor" href="#licencia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Licencia</h3>
 
-<p>Licencia MIT</p>
+<p>Dinam es un proyecto de código abierto con <a href="http://opensource.org/licenses/MIT">licencia MIT</a></p>
 
 <h3>
 <a id="autores-y-contribuidores" class="anchor" href="#autores-y-contribuidores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Autores y contribuidores</h3>
