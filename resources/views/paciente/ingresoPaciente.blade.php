@@ -41,7 +41,7 @@
             <label class="col-md-3 col-xs-12 control-label">Rut *</label>
             <div class="col-md-6 col-xs-12">
               <div class="input-group">
-                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                <span class="input-group-addon"><span class="fa fa-user"></span></span>
                 <input type="text" name="rut" class="form-control">
               </div>
               <span class="help-block">Ingrese el nombre del paciente</span>
@@ -71,10 +71,20 @@
           </div>
 
           <div class="form-group">
+            <label class="col-md-3 col-xs-12 control-label">Fecha de nacimiento </label>
+            <div class="col-md-6 col-xs-12">
+              <div class="input-group">
+                <span class="input-group-addon"><span class="fa fa-birthday-cake"></span></span>
+                <input type="text" name="nacimiento" class="form-control datepicker">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="col-md-3 col-xs-12 control-label">Email </label>
             <div class="col-md-6 col-xs-12">
               <div class="input-group">
-                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
                 <input type="text" name="email" class="form-control">
               </div>
 
@@ -85,7 +95,7 @@
             <label class="col-md-3 col-xs-12 control-label">Teléfono </label>
             <div class="col-md-6 col-xs-12">
               <div class="input-group">
-                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                <span class="input-group-addon"><span class="fa fa-phone"></span></span>
                 <input type="text" name="numero_telefono" class="form-control">
               </div>
 
@@ -96,7 +106,7 @@
             <label class="col-md-3 col-xs-12 control-label">Celular </label>
             <div class="col-md-6 col-xs-12">
               <div class="input-group">
-                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                <span class="input-group-addon"><span class="fa fa-mobile"></span></span>
                 <input type="text" name="celular" class="form-control">
               </div>
 

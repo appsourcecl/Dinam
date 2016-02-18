@@ -17,6 +17,7 @@ class Paciente extends Migration
       $table->string('rut')->unique();
       $table->string('nombre');
       $table->string('apellido');
+      $table->date('nacimiento');
       $table->string('email')->nullable();
       $table->string('password', 255);
       $table->string('celular')->nullable();
