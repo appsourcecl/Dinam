@@ -87,7 +87,7 @@
                     <tr>
                       <td colspan="2">
                         <span onclick="ingreso_nueva_ficha_medica()" class="btn btn-xs btn-info"><i class="fa fa-plus"></i> Nueva medición</span>
-                        <span class="btn btn-xs btn-warning"><i class="fa fa-calendar"></i> Ver historial</span>
+                        <a target="_blank" href="{{ URL::to('paciente/ver-fichas-clinicas-paciente?id='.$paciente->id) }}" class="btn btn-xs btn-warning"><i class="fa fa-calendar"></i> Ver historial</a>
                       </td>
                     </tr>
                   </table>

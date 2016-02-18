@@ -142,4 +142,14 @@ class PacienteController extends Controller
     return redirect('paciente/detalle-paciente?id='.$request->paciente_id);
   }
 
+  public function getVerFichasClinicasPaciente(Request $request)
+  {
+    $data['title'] = "Historial clinico";
+    $data['paciente'] = paciente::where('id', $request->id)->first();
+    $data['fichas_clinicas'] = ficha_clinica::where('paciente_id',$request->id)
+    ->orderBy('id','desc')
+    ->get();
+    return view('paciente.verFichasClinicasPaciente',$data);
+  }
+
 }
