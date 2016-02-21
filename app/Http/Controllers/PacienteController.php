@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Requests;
-use App\Paciente;
 use App\Http\Controllers\Controller;
+//modelos
+use App\Paciente;
 use App\Ficha_clinica;
+use App\Tipo_atencion;
+use App\Atencion;
 
 class PacienteController extends Controller
 {
@@ -72,6 +75,8 @@ class PacienteController extends Controller
     $data['paciente'] = paciente::where('id', $data['id'])->first();
     $data['title'] = $data['paciente']->nombre." ".$data['paciente']->apellido;
     $data['paciente']->edad = $this->getEdad($data['paciente']->nacimiento);
+
+    $data['tipos_atenciones'] = Tipo_atencion::get();
 
     $data['ficha_clinica'] = ficha_clinica::where('paciente_id',$data['id'])
     ->orderBy('id','desc')
@@ -150,6 +155,17 @@ class PacienteController extends Controller
     ->orderBy('id','desc')
     ->get();
     return view('paciente.verFichasClinicasPaciente',$data);
+  }
+
+  //vista que muestra un formulario de ingreso de atención
+  public function getIngresoAtencion(Request $request)
+  {
+    $data['paciente_id'] = $request->paciente_id;
+    $data['tipo_atencion_id'] = $request->tipo_atencion_id;
+    $data['paciente'] = paciente::where('id', $data['paciente_id'])->first();
+    $data['tipo_atencion'] = Tipo_atencion::where('id', $data['tipo_atencion_id'])->first();
+    $data['title'] = $data['tipo_atencion']->nombre;
+    return view('paciente.ingresoAtencion',$data);
   }
 
 }
