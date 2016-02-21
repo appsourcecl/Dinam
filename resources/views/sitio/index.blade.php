@@ -34,7 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <link href="{{ URL::asset('plantillas/template_doctor/js/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ URL::asset('plantillas/template_doctor/css/styles.css') }}" />
   <!-- Font Awesome -->
-  <link href="{{ URL::asset('plantillas/template_doctor/font/css/font-awesome.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -52,7 +52,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <li><a href="#aboutUs" class="scroll-link">Nosotros</a></li>
               <li><a href="#team" class="scroll-link">Equipo</a></li>
               <li><a href="#contactUs" class="scroll-link">Contáctenos</a></li>
-              <li><a href="{{ URL::asset('sitio/reservar-hora') }}" class="scroll-link">Reservar hora</a></li>
+              <li><a href="{{ URL::asset('sitio/reserva-hora') }}" class="scroll-link">Reservar hora</a></li>
             </ul>
           </div>
           <!--/.navbar-collapse-->
@@ -84,30 +84,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
         <div class="row">
           <!-- item -->
-          <div class="col-md-3 text-center c1"> <i class="fa fa-life-ring fa-2x circle"></i>
-            <h3><span class="id-color">Cardio Monitoring</span></h3>
-            <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer elit imperdiet congue.</p>
+          <div class="col-md-3 text-center c1"> <i class="fa fa-balance-scale fa-2x circle"></i>
+            <h3><span class="id-color">Integridad</span></h3>
           </div>
           <!-- end: -->
 
           <!-- item -->
-          <div class="col-md-3 text-center c2"> <i class="fa fa-plus-square fa-2x circle"></i>
-            <h3><span class="id-color">Medical Treatment</span></h3>
-            <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer elit imperdiet congue.</p>
+          <div class="col-md-3 text-center c2"> <i class="fa fa-hand-paper-o fa-2x circle"></i>
+            <h3><span class="id-color">Confianza</span></h3>
           </div>
           <!-- end: -->
 
           <!-- item -->
-          <div class="col-md-3 text-center c1"> <i class="fa fa-female fa-2x circle"></i>
-            <h3><span class="id-color">Women Care Help</span></h3>
-            <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer ultricies sed elit impe.</p>
+          <div class="col-md-3 text-center c1"> <i class="fa fa-stethoscope fa-2x circle"></i>
+            <h3><span class="id-color">Compromiso</span></h3>
           </div>
           <!-- end: -->
 
           <!-- item -->
-          <div class="col-md-3 text-center c2"> <i class="fa fa-child fa-2x circle"></i>
-            <h3><span class="id-color">Child Care</span></h3>
-            <p>Nullam ac rhoncus sapien, non gravida purus. Alinon elit imperdiet congue. Integer elit imperdiet conempus.</p>
+          <div class="col-md-3 text-center c2"> <i class="fa fa-heartbeat fa-2x circle"></i>
+            <h3><span class="id-color">Salud</span></h3>
           </div>
           <!-- end:-->
         </div>
@@ -145,30 +141,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <div class="col-md-12">
             <div id="portfolio">
               <ul class="items list-unstyled clearfix animated fadeInRight showing" data-animation="fadeInRight" style="position: relative; height: 438px;">
-                <li class="item branding" style="position: absolute; left: 0px; top: 0px;"> <a href="images/work/1.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/1.jpg') }}" alt="">
-                  <div class="overlay"> <span>Etiam porta</span> </div>
-                </a> </li>
+                <li class="item branding" style="position: absolute; left: 0px; top: 0px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/1.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/1.jpg') }}" alt="">
+                </a></li>
                 <li class="item photography" style="position: absolute; left: 292px; top: 0px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/2.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/2.jpg') }}" alt="">
-                  <div class="overlay"> <span>Lorem ipsum</span> </div>
-                </a> </li>
-                <li class="item branding" style="position: absolute; left: 585px; top: 0px;"> <a href="images/work/3.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/3.jpg') }}" alt="">
-                  <div class="overlay"> <span>Vivamus quis</span> </div>
-                </a> </li>
-                <li class="item photography" style="position: absolute; left: 877px; top: 0px;"> <a href="images/work/4.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/4.jpg') }}" alt="">
-                  <div class="overlay"> <span>Donec ac tellus</span> </div>
-                </a> </li>
-                <li class="item photography" style="position: absolute; left: 0px; top: 219px;"> <a href="images/work/5.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/5.jpg') }}" alt="">
-                  <div class="overlay"> <span>Etiam volutpat</span> </div>
-                </a> </li>
-                <li class="item web" style="position: absolute; left: 292px; top: 219px;"> <a href="images/work/6.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/6.jpg') }}" alt="">
-                  <div class="overlay"> <span>Donec congue </span> </div>
-                </a> </li>
-                <li class="item photography" style="position: absolute; left: 585px; top: 219px;"> <a href="images/work/7.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/7.jpg') }}" alt="">
-                  <div class="overlay"> <span>Nullam a ullamcorper diam</span> </div>
-                </a> </li>
-                <li class="item web" style="position: absolute; left: 877px; top: 219px;"> <a href="images/work/8.jpg" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/8.jpg') }}" alt="">
-                  <div class="overlay"> <span>Etiam consequat</span> </div>
-                </a> </li>
+                </a></li>
+                <li class="item branding" style="position: absolute; left: 585px; top: 0px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/3.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/3.jpg') }}" alt="">
+                </a></li>
+                <li class="item photography" style="position: absolute; left: 877px; top: 0px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/4.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/4.jpg') }}" alt="">
+                </a></li>
+                <li class="item photography" style="position: absolute; left: 0px; top: 219px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/5.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/5.jpg') }}" alt="">
+                </a></li>
+                <li class="item web" style="position: absolute; left: 292px; top: 219px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/6.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/6.jpg') }}" alt="">
+                </a></li>
+                <li class="item photography" style="position: absolute; left: 585px; top: 219px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/7.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/7.jpg') }}" alt="">
+                </a></li>
+                <li class="item web" style="position: absolute; left: 877px; top: 219px;"> <a href="{{ URL::asset('plantillas/template_doctor/images/work/8.jpg') }}" class="fancybox"> <img src="{{ URL::asset('plantillas/template_doctor/images/work/8.jpg') }}" alt="">
+                </a></li>
               </ul>
             </div>
           </div>

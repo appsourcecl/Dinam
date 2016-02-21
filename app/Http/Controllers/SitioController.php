@@ -15,6 +15,13 @@ class SitioController extends Controller
       $data['title'] = $data['configuracion']->nombre;
       return view('sitio.index',$data);
     }
+
+    public function getReservaHora()
+    {
+      $data['configuracion'] = Configuracion::first();
+      $data['title'] = $data['configuracion']->nombre." - Reserva de hora";
+      return view('sitio.reservaHora',$data);
+    }
 }
 
 ?>
