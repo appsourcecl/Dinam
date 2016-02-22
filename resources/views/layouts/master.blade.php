@@ -111,7 +111,7 @@
   <script type="text/javascript" src="{{ URL::asset('js/plugins.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/actions.js') }}"></script>
 
-  
+  <script type="text/javascript" src="{{ URL::asset('js/plugins/summernote/summernote.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
 
   <!-- END TEMPLATE -->

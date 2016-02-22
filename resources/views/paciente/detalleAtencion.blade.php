@@ -29,16 +29,15 @@
         @endif
         <div class="row">
           <div class="col-md-12">
-            <form action="{{ URL::to('paciente/ingresar-atencion') }}" method="post" class="form-horizontal">
+            <form action="{{ URL::to('paciente/editar-atencion') }}" method="post" class="form-horizontal">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" name="tipo_atencion_id" value="{{ $tipo_atencion->id }}" />
-              <input type="hidden" name="paciente_id" value="{{ $paciente->id }}" />
+              <input type="hidden" name="id" value="{{ $atencion->id }}" />
               <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">Fecha </label>
                 <div class="col-md-6 col-xs-12">
                   <div class="input-group">
                     <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                    <input type="text" value="{{ $fecha }}" name="fecha" class="form-control datepicker">
+                    <input type="text" value="{{ $atencion->fecha }}" name="fecha" class="form-control datepicker">
                   </div>
                 </div>
               </div>
@@ -47,7 +46,7 @@
                 <div class="col-md-6 col-xs-12">
                   <div class="input-group">
                     <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                    <input type="text" name="titulo" class="form-control">
+                    <input type="text" value="{{ $atencion->titulo }}" name="titulo" class="form-control">
                   </div>
                 </div>
               </div>
@@ -55,11 +54,11 @@
                 <label class="col-md-2 col-xs-12 control-label">Descripción </label>
                 <div class="col-md-8 col-xs-12">
                   <div class="input-group col-md-12">
-                    <textarea type="text" name="descripcion" rows="7" class="summernote"></textarea>
+                    <textarea type="text" name="descripcion" rows="7" class="summernote">{{ $atencion->descripcion }}</textarea>
                   </div>
                 </div>
               </div>
-              <input type="submit" class="btn btn-success" value="Ingresar atención" />
+              <input type="submit" class="btn btn-success" value="Editar atención" />
             </form>
           </div>
         </div>

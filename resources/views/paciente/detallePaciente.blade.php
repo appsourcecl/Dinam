@@ -108,221 +108,50 @@
                           <div class="btn-group">
                             <a href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle"><i class="fa fa-filter"></i>Filtrar <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                              @foreach ($tipos_atenciones as $tipo_atencion)
-                              <li><a href="#"><i class="{{ $tipo_atencion->icono }}"></i>{{ $tipo_atencion->nombre }}</a></li>
-                              @endforeach
-                            </ul>
-                          </div>
-                          <div class="btn-group">
-                            <a href="#" data-toggle="dropdown" class="btn btn-success dropdown-toggle"><i class="fa fa-plus"></i>Nuevo <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                              @foreach ($tipos_atenciones as $tipo_atencion)
-                              <li>
-                                <a href="{{ URL::to('paciente/ingreso-atencion?paciente_id='.$paciente->id.'&tipo_atencion_id='.$tipo_atencion->id) }}">
-                                  <i class="{{ $tipo_atencion->icono }}"></i>
-                                  {{ $tipo_atencion->nombre }}
-                                </a>
-                              </li>
-                              @endforeach
-                            </ul>
-                          </div>
-                        </center>
-                      </td>
-                    </tr>
-                  </table>
-                  <div  style="overflow-x:hidden; overflow-y:scroll;height:400px; background-color:#e8e8e8;padding:10px;border: 1px solid #ccc">
-                    <div class="timeline timeline-right">
-                      <div class="timeline-item timeline-main">
-                        <div class="timeline-date">2014</div>
-                      </div>
-                      <div class="timeline-item timeline-item-right">
-                        <div class="timeline-item-info">Yesterday</div>
-                        <div class="timeline-item-icon"><span class="fa fa-globe"></span></div>
-                        <div class="timeline-item-content">
-                          <div class="timeline-heading">
-                            <img src="assets/images/users/user2.jpg"/> <a href="#">John Doe</a> added article <a href="#">Lorem ipsum dolor sit amet</a>
-                          </div>
-                          <div class="timeline-body">
-                            <img src="assets/images/gallery/nature-4.jpg" class="img-text" width="150" align="left"/>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempus dolor id orci lacinia, eget aliquam velit consequat.</p>
-                            <p>Vivamus at tincidunt lectus, faucibus condimentum quam. Duis facilisis sem sed eros malesuada, vel dignissim diam ornare. Etiam rhoncus, nibh non auctor mattis, ligula diam mattis dolor, non tincidunt lectus velit nec metus.
-                              Phasellus dictum justo vitae ornare lobortis. Integer ut lectus vel mauris tempor ultricies eget vitae turpis. Sed eleifend odio quis rutrum volutpat.</p>
-                              <ul class="list-tags">
-                                <li><a href="#"><span class="fa fa-tag"></span> tempor</a></li>
-                                <li><a href="#"><span class="fa fa-tag"></span> eros</a></li>
-                                <li><a href="#"><span class="fa fa-tag"></span> suspendisse</a></li>
-                                <li><a href="#"><span class="fa fa-tag"></span> dolor</a></li>
+                                @if( $tipo_atencion_id != "" )
+                                <li><a href="{{ URL::to('paciente/detalle-paciente?id='.$paciente->id) }}">Ver todos</a></li>
+                                @endif
+                                @foreach ($tipos_atenciones as $tipo_atencion)
+                                <li><a href="{{ URL::to('paciente/detalle-paciente?id='.$paciente->id.'&tipo_atencion_id='.$tipo_atencion->id) }}"><i class="{{ $tipo_atencion->icono }}"></i>{{ $tipo_atencion->nombre }}</a></li>
+                                @endforeach
                               </ul>
                             </div>
-                            <div class="timeline-body comments">
-                              <div class="comment-item">
-                                <img src="assets/images/users/user4.jpg"/>
-                                <p class="comment-head">
-                                  <a href="#">Brad Pitt</a> <span class="text-muted">@bradpitt</span>
-                                </p>
-                                <p>Awesome, man, that is awesome...</p>
-                                <small class="text-muted">10h ago</small>
-                              </div>
-                              <div class="comment-write">
-                                <textarea class="form-control" placeholder="Write a comment" rows="1"></textarea>
-                              </div>
+                            <div class="btn-group">
+                              <a href="#" data-toggle="dropdown" class="btn btn-success dropdown-toggle"><i class="fa fa-plus"></i>Nuevo <span class="caret"></span></a>
+                              <ul class="dropdown-menu" role="menu">
+                                @foreach ($tipos_atenciones as $tipo_atencion)
+                                <li>
+                                  <a href="{{ URL::to('paciente/ingreso-atencion?paciente_id='.$paciente->id.'&tipo_atencion_id='.$tipo_atencion->id) }}">
+                                    <i class="{{ $tipo_atencion->icono }}"></i>
+                                    {{ $tipo_atencion->nombre }}
+                                  </a>
+                                </li>
+                                @endforeach
+                              </ul>
                             </div>
-                            <div class="timeline-footer">
-                              <a href="#">Read more</a>
-                              <div class="pull-right">
-                                <a href="#"><span class="fa fa-comment"></span> 35</a>
-                                <a href="#"><span class="fa fa-share"></span></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END TIMELINE ITEM -->
-
-                        <!-- START TIMELINE ITEM -->
+                          </center>
+                        </td>
+                      </tr>
+                    </table>
+                    <div  style="overflow-x:hidden; overflow-y:scroll;height:400px; background-color:#e8e8e8;padding:10px;border: 1px solid #ccc">
+                      <div class="timeline timeline-right">
+                        @foreach($atenciones as $atencion)
                         <div class="timeline-item timeline-item-right">
-                          <div class="timeline-item-info">29 Sep 2014</div>
-                          <div class="timeline-item-icon"><span class="fa fa-image"></span></div>
+                          <div class="timeline-item-info">{{ $atencion->fecha }}</div>
+                          <div class="timeline-item-icon"><span class="{{ $atencion->icono }}"></span></div>
                           <div class="timeline-item-content">
                             <div class="timeline-heading">
-                              <img src="assets/images/users/user.jpg"/> <a href="#">Dmitry Ivaniuk</a> posted <a href="#">@Nature</a> images
+                              <a href="#">{{ $atencion->nombre }}</a> : {{ $atencion->titulo }}
                             </div>
-                            <div class="timeline-body" id="links">
-                              <div class="row">
-                                <div class="col-md-4">
-                                  <a href="assets/images/gallery/nature-1.jpg" title="Nature Image 1" data-gallery>
-                                    <img src="assets/images/gallery/nature-1.jpg" class="img-responsive img-text"/>
-                                  </a>
-                                </div>
-                                <div class="col-md-4">
-                                  <a href="assets/images/gallery/nature-2.jpg" title="Nature Image 2" data-gallery>
-                                    <img src="assets/images/gallery/nature-2.jpg" class="img-responsive img-text"/>
-                                  </a>
-                                </div>
-                                <div class="col-md-4">
-                                  <a href="assets/images/gallery/nature-3.jpg" title="Nature Image 3" data-gallery>
-                                    <img src="assets/images/gallery/nature-3.jpg" class="img-responsive img-text"/>
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="timeline-body comments">
-                              <div class="comment-item">
-                                <img src="assets/images/users/user2.jpg"/>
-                                <p class="comment-head">
-                                  <a href="#">John Doe</a> <span class="text-muted">@johndoe</span>
-                                </p>
-                                <p>Amazing! Where did you get it?</p>
-                                <small class="text-muted">10h ago</small>
-                              </div>
-                              <div class="comment-write">
-                                <textarea class="form-control" placeholder="Write a comment" rows="1"></textarea>
+                            <div class="timeline-body">
+                              <div class="timeline-footer">
+                                <a href="detalle-atencion?id={{ $atencion->id }}">Ver detalle</a>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <!-- END TIMELINE ITEM -->
+                        @endforeach
 
-                        <!-- START TIMELINE ITEM -->
-                        <div class="timeline-item timeline-item-right">
-                          <div class="timeline-item-info">06 Oct 2014</div>
-                          <div class="timeline-item-icon"><span class="fa fa-star"></span></div>
-                          <div class="timeline-item-content">
-                            <div class="timeline-heading" style="padding-bottom: 10px;">
-                              <img src="assets/images/users/user2.jpg"/>
-                              <a href="#">John Doe</a> joined group <a href="#">Web Developers</a>
-                            </div>
-                            <div class="timeline-body comments">
-                              <div class="comment-item">
-                                <img src="assets/images/users/user.jpg"/>
-                                <p class="comment-head">
-                                  <a href="#">Dmitry Ivaniuk</a> <span class="text-muted">@Aqvatarius</span>
-                                </p>
-                                <p>You r welcome my friend :)</p>
-                                <small class="text-muted">5 min ago</small>
-                              </div>
-                              <div class="comment-item">
-                                <img src="assets/images/users/user2.jpg"/>
-                                <p class="comment-head">
-                                  <a href="#">John Doe</a> <span class="text-muted">@johndoe</span>
-                                </p>
-                                <p>Thank you, Dmitry!!! ;)</p>
-                                <small class="text-muted">1 min ago / to @Aqvatarius</small>
-                              </div>
-                              <div class="comment-write">
-                                <textarea class="form-control" placeholder="Write a comment" rows="1"></textarea>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END TIMELINE ITEM -->
-
-                        <!-- START TIMELINE ITEM -->
-                        <div class="timeline-item timeline-item-right">
-                          <div class="timeline-item-info">5 Sep 2014</div>
-                          <div class="timeline-item-icon"><span class="fa fa-map-marker"></span></div>
-                          <div class="timeline-item-content">
-                            <div class="timeline-body padding-0">
-                              <div id="google_ptm_map" style="width: 100%; height: 150px;"></div>
-                            </div>
-                            <div class="timeline-heading">
-                              <img src="assets/images/users/user2.jpg"/> <a href="#">John Doe</a> invite you to <a href="#">@Event</a>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END TIMELINE ITEM -->
-
-                        <!-- START TIMELINE ITEM -->
-                        <div class="timeline-item timeline-item-right">
-                          <div class="timeline-item-info">06 Oct 2014</div>
-                          <div class="timeline-item-icon"><span class="fa fa-users"></span></div>
-                          <div class="timeline-item-content">
-                            <div class="timeline-heading" style="padding-bottom: 10px;">
-                              <img src="assets/images/users/user3.jpg"/>
-                              <a href="#">Nadia Ali</a> added to friends
-                              <img src="assets/images/users/user.jpg"/>
-                              <img src="assets/images/users/user2.jpg"/>
-                              <img src="assets/images/users/user4.jpg"/>
-                            </div>
-                            <div class="timeline-body comments">
-                              <div class="comment-write">
-                                <textarea class="form-control" placeholder="Write a comment" rows="1"></textarea>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END TIMELINE ITEM -->
-
-                        <!-- START TIMELINE ITEM -->
-                        <div class="timeline-item timeline-main">
-                          <div class="timeline-date">2013</div>
-                        </div>
-                        <!-- END TIMELINE ITEM -->
-
-                        <!-- START TIMELINE ITEM -->
-                        <div class="timeline-item timeline-item-right">
-                          <div class="timeline-item-info">30 Dec 2013</div>
-                          <div class="timeline-item-icon"><span class="fa fa-user"></span></div>
-                          <div class="timeline-item-content">
-                            <div class="timeline-heading padding-bottom-0" style="padding-bottom: 10px;">
-                              <img src="assets/images/users/user2.jpg"/>
-                              <a href="#">John Doe</a> update user image
-                            </div>
-                            <div class="timeline-body text-center">
-                              <img src="assets/images/users/user2.jpg" width="100" class="img-circle img-thumbnail"/>
-                            </div>
-                            <div class="timeline-body comments">
-                              <div class="comment-write">
-                                <textarea class="form-control" placeholder="Write a comment" rows="1"></textarea>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END TIMELINE ITEM -->
-
-                        <!-- START TIMELINE ITEM -->
-                        <div class="timeline-item timeline-main">
-                          <div class="timeline-date"><a href="#"><span class="fa fa-ellipsis-h"></span></a></div>
-                        </div>
                         <!-- END TIMELINE ITEM -->
                       </div>
                       <!-- END TIMELINE -->
