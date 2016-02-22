@@ -48,6 +48,9 @@
                   <th>
                     Email
                   </th>
+                  <th>
+                    F. Ingreso
+                  </th>
                   <th class="col-md-1">
                     Detalle
                   </th>
@@ -70,6 +73,9 @@
                   </td>
                   <td>
                     {{$paciente->email}}
+                  </td>
+                  <td>
+                    {{$paciente->created_at}}
                   </td>
                   <td>
                     <a href="{{ URL::to('paciente/detalle-paciente?id='.$paciente->id) }}" class="btn btn-info btn-mini active">Ver detalle</a>

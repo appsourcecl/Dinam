@@ -14,18 +14,19 @@ class Atencion extends Migration
   {
     Schema::create('atenciones', function (Blueprint $table) {
       $table->increments('id');
-      $table->dateTime('fecha');
+      $table->date('fecha');
       $table->string('titulo',500);
-      $table->string('descripcion',5000);
+      $table->string('descripcion',10000);
       $table->timestamps();
     });
 
     Schema::table('atenciones', function($table) {
       $table->integer('paciente_id')->unsigned();
       $table->foreign('paciente_id')->references('id')->on('pacientes');
-      $table->integer('tipo_atenticion_id')->unsigned();
-      $table->foreign('paciente_id')->references('id')->on('pacientes');
-      $table->foreign('tipo_atenticion_id')->references('id')->on('tipo_atencion');
+      $table->integer('tipo_atencion_id')->unsigned();
+      $table->foreign('tipo_atencion_id')->references('id')->on('tipo_atencion');
+      $table->integer('profesional_id')->unsigned();
+      $table->foreign('profesional_id')->references('id')->on('profesionales');
     });
   }
 

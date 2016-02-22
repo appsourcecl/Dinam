@@ -65,18 +65,39 @@ class PacienteController extends Controller
     $paciente->celular = $request->celular;
     $paciente->save();
 
-    $request->session()->flash('message', 'paciente ingresado con éxito');
+    $request->session()->flash('message', 'Paciente ingresado con éxito');
     return redirect('paciente/ver-pacientes');
   }
 
   public function getDetallePaciente(Request $request)
   {
+
     $data['id'] = $request->id;
+    if($request->tipo_atencion_id != null)
+    {
+      $data['tipo_atencion_id'] = $request->tipo_atencion_id;
+    }else{
+      $data['tipo_atencion_id'] = "";
+    }
+
     $data['paciente'] = paciente::where('id', $data['id'])->first();
     $data['title'] = $data['paciente']->nombre." ".$data['paciente']->apellido;
     $data['paciente']->edad = $this->getEdad($data['paciente']->nacimiento);
 
+    //Atenciones y tipos de atencion
     $data['tipos_atenciones'] = Tipo_atencion::get();
+    $data['atenciones'] = Atencion::
+    select(
+    'atenciones.titulo',
+    'atenciones.id',
+    'atenciones.fecha',
+    'tipo_atencion.icono',
+    'tipo_atencion.nombre')
+    ->where('paciente_id',$data['id'])
+    ->where('tipo_atencion.id','like','%'.$data['tipo_atencion_id'].'%')
+    ->join('tipo_atencion','tipo_atencion.id','=','atenciones.tipo_atencion_id')
+    ->orderBy('id','desc')
+    ->get();
 
     $data['ficha_clinica'] = ficha_clinica::where('paciente_id',$data['id'])
     ->orderBy('id','desc')
@@ -126,7 +147,7 @@ class PacienteController extends Controller
     $paciente->celular = $request->celular;
     $paciente->update();
 
-    $request->session()->flash('message', 'paciente editado con éxito');
+    $request->session()->flash('message', 'Paciente editado con éxito');
     return redirect('paciente/detalle-paciente?id='.$data['id']);
   }
 
@@ -160,12 +181,47 @@ class PacienteController extends Controller
   //vista que muestra un formulario de ingreso de atención
   public function getIngresoAtencion(Request $request)
   {
+    $data['fecha'] = date("Y-m-d");
     $data['paciente_id'] = $request->paciente_id;
     $data['tipo_atencion_id'] = $request->tipo_atencion_id;
-    $data['paciente'] = paciente::where('id', $data['paciente_id'])->first();
+    $data['paciente'] = Paciente::where('id', $data['paciente_id'])->first();
     $data['tipo_atencion'] = Tipo_atencion::where('id', $data['tipo_atencion_id'])->first();
     $data['title'] = $data['tipo_atencion']->nombre;
     return view('paciente.ingresoAtencion',$data);
+  }
+
+  public function postIngresarAtencion(Request $request)
+  {
+    $atencion = new Atencion;
+    $atencion->tipo_atencion_id = $request->tipo_atencion_id;
+    $atencion->paciente_id = $request->paciente_id;
+    $atencion->fecha = $request->fecha;
+    $atencion->titulo = $request->titulo;
+    $atencion->descripcion = $request->descripcion;
+    $atencion->save();
+    $request->session()->flash('message', 'Atención ingresada con éxito');
+    return redirect('paciente/detalle-atencion?id='.$atencion->id);
+  }
+
+  public function postEditarAtencion(Request $request)
+  {
+    $atencion = Atencion::where('id', $request->id)->first();
+    $atencion->fecha = $request->fecha;
+    $atencion->titulo = $request->titulo;
+    $atencion->descripcion = $request->descripcion;
+    $atencion->update();
+    $request->session()->flash('message', 'Atención editada con éxito');
+    return redirect('paciente/detalle-atencion?id='.$atencion->id);
+  }
+
+
+  public function getDetalleAtencion(Request $request)
+  {
+    $data['atencion'] = Atencion::where('id',$request->id)->first();
+    $data['paciente'] = Paciente::where('id', $data['atencion']->paciente_id)->first();
+    $data['tipo_atencion'] = Tipo_atencion::where('id', $data['atencion']->tipo_atencion_id)->first();
+    $data['title'] = $data['tipo_atencion']->nombre;
+    return view('paciente.detalleAtencion',$data);
   }
 
 }
