@@ -35,6 +35,20 @@ class HoraController extends Controller
     return view('hora.verHoras',$data);
   }
 
+  public function getVerHorasListado()
+  {
+    $data['fecha'] = date("Y-m-d");
+    $data['arrFecha'] = explode("-",$data['fecha']);
+    //Listo a todos los profesionales
+    //Realizo una consulta para las especialidades
+    $data['profesionales'] = Profesional::select('nombre','apellido','id')
+    ->orderBy('apellido', 'desc')
+    ->get();
+
+    $data['title'] = "Horas";
+    return view('hora.verHorasListado',$data);
+  }
+
   public function getAjaxCalendarioHoras(Request $request)
   {
     $data['fecha'] = $request->fecha;
@@ -105,6 +119,77 @@ class HoraController extends Controller
 
     return view('hora.ajaxCalendarioHoras',$data);
   }
+
+  public function getAjaxHorasListado(Request $request)
+  {
+    $data['fecha'] = $request->fecha;
+    $data['arrFecha'] = explode("-",$data['fecha']);
+    $data['estados'] = Estado_hora::orderBy('nombre','desc')->get();
+    //Si consulta por todos los profesionales o si consulta por un solo profesional
+    if($request->profesional_id == "")
+    {
+      $data['especialidades'] = Especialidad::orderBy('nombre','asc')->get();
+
+      $data['todos_profesionales'] = true;
+      $data['profesionales'] = Profesional::select('nombre','apellido','id')
+      ->orderBy('apellido', 'desc')
+      ->get();
+      //Horas solicitadas del profesional
+      $data['horas'] = Hora::select(
+      'especialidades.nombre as especialidad_nombre',
+      'horas.id',
+      'horas.fecha_hora',
+      'horas.comentario',
+      'estado_hora.color',
+      'profesionales.nombre as profesional_nombre',
+      'profesionales.apellido as profesional_apellido',
+      'pacientes.nombre as paciente_nombre',
+      'pacientes.apellido as paciente_apellido',
+      'pacientes.rut as paciente_rut')
+      ->where('pacientes.rut','like','%'.$request->paciente_rut.'%')
+      ->join('estado_hora','estado_hora.id','=', 'horas.estado_hora_id')
+      ->join('pacientes','pacientes.id','=', 'horas.paciente_id')
+      ->join('profesionales','profesionales.id','=','horas.profesional_id')
+      ->join('especialidades','especialidades.id','=','horas.especialidad_id')
+      ->get();
+    }else{
+      //Consulto por un profesional es específico
+      $data['todos_profesionales'] = false;
+      //Detalle del profesional
+      $data['profesional'] = Profesional::where('id', $request->profesional_id)
+      ->first();
+      //Especialidades del profesional
+      $data['especialidades'] = Especialidad::select('especialidades.id','especialidades.nombre')
+      ->join('profesional_especialidades', 'profesional_especialidades.especialidad_id','=','especialidades.id')
+      ->where('profesional_id',$request->profesional_id)
+      ->orderBy('nombre','asc')
+      ->get();
+      //Horas solicitadas del profesional
+      $data['horas'] = Hora::select(
+      'especialidades.nombre as especialidad_nombre',
+      'horas.id',
+      'horas.fecha_hora',
+      'horas.comentario',
+      'estado_hora.color',
+      'profesionales.nombre as profesional_nombre',
+      'profesionales.apellido as profesional_apellido',
+      'pacientes.nombre as paciente_nombre',
+      'pacientes.apellido as paciente_apellido',
+      'pacientes.rut as paciente_rut')
+      ->where('horas.profesional_id', $request->profesional_id )
+      ->join('estado_hora','estado_hora.id','=', 'horas.estado_hora_id')
+      ->join('pacientes','pacientes.id','=', 'horas.paciente_id')
+      ->join('profesionales','profesionales.id','=','horas.profesional_id')
+      ->join('especialidades','especialidades.id','=','horas.especialidad_id')
+      ->get();
+      if($data['horas'] == null)
+      {
+        $data['horas'] = new Hora;
+      }
+    }
+    return view('hora.ajaxHorasListado',$data);
+  }
+
 
   public function getAjaxDetalleHora(Request $request)
   {
