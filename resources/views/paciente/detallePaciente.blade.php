@@ -144,9 +144,7 @@
                               <a href="#">{{ $atencion->nombre }}</a> : {{ $atencion->titulo }}
                             </div>
                             <div class="timeline-body">
-                              <div class="timeline-footer">
-                                <a href="detalle-atencion?id={{ $atencion->id }}">Ver detalle</a>
-                              </div>
+                                <a class="col-md-12 btn btn-info" href="detalle-atencion?id={{ $atencion->id }}">Ver detalle</a>
                             </div>
                           </div>
                         </div>

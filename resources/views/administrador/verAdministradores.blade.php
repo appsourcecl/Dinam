@@ -60,7 +60,7 @@
                     {{$administrador->email}}
                   </td>
                   <td>
-                    <a href="{{ URL::to('administrador/detalle-administrador?id='.$administrador->id) }}" class="btn btn-info btn-mini active">Ver detalle</a>
+                    <a href="{{ URL::to('administrador/detalle-administrador?id='.$administrador->id) }}" class="btn btn-info btn-mini">Ver detalle</a>
                   </td>
                 </tr>
                 @endforeach
