@@ -88,8 +88,6 @@ function calendario_horas()
     }
   });
 }
-
-
 </script>
 
 @stop

@@ -141,12 +141,14 @@ class HoraController extends Controller
       'horas.fecha_hora',
       'horas.comentario',
       'estado_hora.color',
+      'estado_hora.nombre as estado_hora_nombre',
       'profesionales.nombre as profesional_nombre',
       'profesionales.apellido as profesional_apellido',
       'pacientes.nombre as paciente_nombre',
       'pacientes.apellido as paciente_apellido',
       'pacientes.rut as paciente_rut')
       ->where('pacientes.rut','like','%'.$request->paciente_rut.'%')
+      ->where('horas.fecha_hora','like','%'.$request->fecha.'%')
       ->join('estado_hora','estado_hora.id','=', 'horas.estado_hora_id')
       ->join('pacientes','pacientes.id','=', 'horas.paciente_id')
       ->join('profesionales','profesionales.id','=','horas.profesional_id')
